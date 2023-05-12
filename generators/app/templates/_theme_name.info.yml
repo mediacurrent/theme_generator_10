@@ -13,9 +13,8 @@ name: <%= themeName %>
 type: theme
 description: <%= themeDesc %>
 package: Other
-core_version_requirement: ^8 || ^9
-# Classy vs. Stable as a base theme: https://www.lullabot.com/articles/a-tale-of-two-base-themes-in-drupal-8-core
-base theme: <%= baseTheme %>
+core_version_requirement: ^9 || ^10
+base theme: stable9
 
 # This section controls the libraries for your theme. For full documentation,
 # see https://www.drupal.org/node/2216195
@@ -40,7 +39,6 @@ components:
     <%= themeNameMachine %>:
       - src/stories/global
       - src/stories/components
-      - src/stories/pages
       - src/templates
 
 # This section lists the regions defined in the theme (our base theme) default
@@ -48,15 +46,7 @@ components:
 # the semi-colon is the machine name of the region. The text after the
 # semi-colon is the region's description used on the admin/structure/block page.
 regions:
-  # The three header regions are stacked vertically.
-  header_top: Header Top
-  header_middle: Header Middle
-  header_bottom: Header Bottom
+  primary_menu: Primary Menu
+  highlighted: Highlighted
   content: Content
-  sidebar_right: Sidebar Right
-  # The three footer regions are stacked horizontally, so that each region can
-  # have multiple blocks; the addendum is displayed afterwards.
-  footer_left: Footer Left
-  footer_middle: Footer Middle
-  footer_right: Footer Right
-  addendum: Addendum
+  footer: Footer

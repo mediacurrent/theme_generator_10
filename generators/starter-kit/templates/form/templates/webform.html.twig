@@ -21,7 +21,9 @@
  * @ingroup themeable
  */
 #}
-<div class="container">
+{{ attach_library('<%= themeNameMachine %>/form') }}
+
+<div class="container-fluid mb-6 mb-lg-12">
   <form{{ attributes }}>
     {{ title_prefix }}
     {{ children }}

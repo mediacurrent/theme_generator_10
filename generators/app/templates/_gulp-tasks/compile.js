@@ -11,6 +11,7 @@ const babel = require('gulp-babel');
 const rename = require('gulp-rename');
 
 sass.compiler = require('sass');
+
 /**
  * Error handler function so we can see when errors happen.
  * @param {object} err error that was thrown
@@ -30,7 +31,11 @@ module.exports = {
         './src/stories/**/**/*.scss',
         './static/**/*.css'
       ])
-      .pipe(sass().on('error', handleError))
+      .pipe(sass({
+        includePaths: [
+          './node_modules',
+        ]
+      }).on('error', handleError))
       .pipe(
         prefix({
           cascade: false

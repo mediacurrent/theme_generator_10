@@ -1,35 +1,33 @@
 {{ attach_library('<%= themeNameMachine %>/map') }}
 
-{% if map.address %}
-  <section class="map map--2col{{ attributes ? ' ' ~ attributes.class}}">
-    <div class="map__wrapper">
-      <div class="map__embed">
-        {{ map.map_embed }}
-      </div>
-    </div>
-    <div class="map__text">
+<div class="map {{ modifier }}">
+  <div class="card border-0">
+    {{ map.map_embed }}
+
+    <div class="card-body p-5">
       {% if map.eyebrow %}
-        {%
-          include '@<%= themeNameMachine %>/eyebrow/eyebrow.twig' with {
-            "eyebrow": map.eyebrow
-          } only
-        %}
+        <h6 class="text-uppercase">
+          {{ map.eyebrow.text }}
+        </h6>
       {% endif %}
       {% if map.location %}
-        <h2 class="map__location">{{ map.location }}</h2>
+        <h2 class="mb-3">{{ map.location }}</h2>
       {% endif %}
-      <p class="map__address">
+      <div class="card-text">
         {{ map.address }}
-        {% if map.link %}
-          <a href="{{ map.link.url }}" class="map__link">{{ map.link.text }}</a>
+        {% if card.summary_text %}
+          {{ card.summary_text}}
         {% endif %}
-      </p>
+      </div>
+      {% if map.link %}
+        {% include '@<%= themeNameMachine %>/button/button.twig' with {
+            "button": {
+              "url": map.link.url,
+              "text": map.link.text,
+              "icon": 'arrow_right_alt',
+              "modifier": 'btn btn-primary'
+            }
+          } only %}
+      {% endif %}
     </div>
-  </section>
-{% else %}
-  <section class="map map--full{{ attributes ? ' ' ~ attributes.class}}">
-    <div class="map__embed">
-      {{ map.map_embed }}
-    </div>
-  </section>
-{% endif %}
+</div>

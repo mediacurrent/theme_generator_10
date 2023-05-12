@@ -1,0 +1,19 @@
+<div class="stats-item col-lg-6 px-lg-2 pb-5 pb-lg-10">
+  {% if item.icon %}
+    <div class="text-secondary">
+      {{ item.icon }}
+    </div>
+  {% endif %}
+  {% include '@<%= themeNameMachine %>/heading/heading.twig' with {
+    "heading": {
+      title: item.title,
+      heading_level: '3',
+      modifier: heading_modifier
+    }
+  } only %}
+  {% if item.summary %}
+    <div class="mt-2 fs-6">
+      {{ item.summary }}
+    </div>
+  {% endif %}
+</div>

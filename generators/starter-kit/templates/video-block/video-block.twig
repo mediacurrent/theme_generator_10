@@ -1,0 +1,26 @@
+{% if video %}
+  <div class="card border-0">
+    {%
+      include '@<%= themeNameMachine %>/video/video.twig' with {
+        video: video,
+      } only
+    %}
+    <div class="card-body">
+      {% if heading %}
+        {%
+          include '@<%= themeNameMachine %>/heading/heading.twig' with {
+            "heading": heading
+          } only
+        %}
+      {% endif %}
+      <p class="card-text">
+        {% if summary_text %}
+          {{ summary_text}}
+        {% endif %}
+      </p>
+      {% if link.url %}
+        <a href="{{ link.url }}" class="btn btn-primary">{{ link.text }}</a>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}

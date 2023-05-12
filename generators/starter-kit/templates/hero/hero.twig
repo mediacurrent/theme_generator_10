@@ -1,46 +1,94 @@
 {{ attach_library('<%= themeNameMachine %>/hero') }}
 
-<section class="hero">
-  {% if hero.media %}
-    {%
-      include '@<%= themeNameMachine %>/media/media.twig' with {
-        "image": hero.media.image
-      } only
-    %}
-  {% endif %}
+{% if layout == 'image_right' or layout == 'image_left' %}
+  <div class="hero {{ modifier }}">
+    <div class="row {{ layout == 'image_right' ? 'flex-lg-row-reverse' : 'flex-lg-row' }} align-items-center">
+      <div class="col-lg-6">
+        {{ image }}
+      </div>
+      <div class="col-lg-6 {{ layout == 'image_right' ? 'pe' : 'ps' }}-lg-10">
+        {% if eyebrow %}
+          <div class="text-uppercase mb-2 mt-3 mt-lg-0 fs-7">
+            {{ eyebrow }}
+          </div>
+        {% endif %}
+        {%
+          include '@<%= themeNameMachine %>/heading/heading.twig' with {
+            "heading": heading
+          } only
+        %}
+        {%
+          include '@<%= themeNameMachine %>/heading/heading.twig' with {
+            "heading": {
+              title: title,
+              heading_level: '2',
+              modifier: 'display-6'
+            }
+          } only
+        %}
+        {% if body %}
+          {%
+            include '@<%= themeNameMachine %>/rich-text/rich-text.twig' with {
+              "body_text": body.body_text,
+              "modifier": body.modifier
+            } only
+          %}
+        {% endif %}
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+          {% if button.url %}
+            {%
+              include '@<%= themeNameMachine %>/button/button.twig' with {
+                "button": button
+              } only
+            %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <div class="hero__content">
-    {% if hero.eyebrow %}
-      {%
-        include '@<%= themeNameMachine %>/eyebrow/eyebrow.twig' with {
-          "eyebrow": hero.eyebrow
-        } only
-      %}
+{% else %}
+  <div class="hero card border-0 {{ modifier }} {{ layout }} {{ layout == 'overlay' ? 'rounded' : 'text-dark' }}">
+    {% if layout != 'image_bottom' %}
+      <div class="{{ layout != 'overlay' ? 'pb-3 pb-lg-8' }}">
+        {{ image }}
+      </div>
     {% endif %}
-
-    {% if hero.heading %}
-      {%
-        include '@<%= themeNameMachine %>/heading/heading.twig' with {
-          "heading": hero.heading
-        } only
-      %}
-    {% endif %}
-
-    {% if hero.body %}
-      {%
-        include '@<%= themeNameMachine %>/body-text/body-text.twig' with {
-          "body_text": hero.body.body_text,
-          "modifier": hero.body.classes
-        } only
-      %}
-    {% endif %}
-
-    {% if hero.button.url %}
-      {%
-        include '@<%= themeNameMachine %>/button/button.twig' with {
-          "button": hero.button
-        } only
-      %}
+    <div class="{{ layout == 'overlay' ? 'card-img-overlay' }} d-flex align-items-center justify-content-center text-align-center">
+      <div class="{{ layout != 'overlay' ? 'col-md-8 col-xxxl-6' : 'col-lg-6' }}">
+        {% if eyebrow %}
+          <div class="text-uppercase mb-2 fs-7">
+            {{ eyebrow }}
+          </div>
+        {% endif %}
+        {% if heading %}
+          {%
+            include '@<%= themeNameMachine %>/heading/heading.twig' with {
+              "heading": heading
+            } only
+          %}
+        {% endif %}
+        {% if body %}
+          {%
+            include '@<%= themeNameMachine %>/rich-text/rich-text.twig' with {
+              "body_text": body.body_text,
+              "modifier": body.modifier
+            } only
+          %}
+        {% endif %}
+        {% if button.url %}
+          {%
+            include '@<%= themeNameMachine %>/button/button.twig' with {
+              "button": button
+            } only
+          %}
+        {% endif %}
+      </div>
+    </div>
+    {% if layout == 'image_bottom' %}
+      <div class="pt-3 pt-lg-8">
+        {{ image }}
+      </div>
     {% endif %}
   </div>
-</section>
+{% endif %}

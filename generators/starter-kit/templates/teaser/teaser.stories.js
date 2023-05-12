@@ -2,7 +2,7 @@ import "./teaser.scss";
 import TeaserTemplate from "./teaser.twig";
 
 export default {
-  title: "General/Teaser",
+  title: "Editorial/50-50 Teaser",
   argTypes: {
     title: {
       description: "Teaser title",
@@ -24,14 +24,43 @@ export default {
       description: "Teaser read more link",
       control: "text",
     },
+    layout: {
+      description: "Teaser layout",
+      control: "text",
+    },
+    modifer: {
+      description: "Teaser modifier",
+      control: "text",
+    },
   },
 };
 
-export const Teaser = TeaserTemplate.bind({});
-Teaser.args = {
+export const Left = TeaserTemplate.bind({});
+Left.args = {
   "title": 'News Title',
-  "authored_date": "Tues, Nov. 20, 2018",
-  "image": "<img src='./images/gallery7.jpg' width='100%' alt='Placeholder' style='display:block;height:100%;max-height:200px;max-width:350px;width:100%;' />",
+  'eyebrow': 'Eyebrow',
+  "image": "<img src='https://via.placeholder.com/800x600.png' class='img-fluid rounded' alt='Placeholder' />",
   "summary": 'Contra legem facit qui id facit quod lex prohibet. Nec dubitamus multa iter quae et nos invenerat. Praeterea iter est quasdam res quas ex communi. Lorem ipsum dolor sit amet, consectetur adipisici elit.',
-  "link": "#",
+  "link": {
+    "url": "#",
+    "text":"Read More",
+    "modifier": "btn-primary"
+  },
+  "layout": "left",
+  "modifier": "container-fluid rounded",
+};
+
+export const Right = TeaserTemplate.bind({});
+Right.args = {
+  "title": 'News Title',
+  'eyebrow': 'Eyebrow',
+  "image": "<img src='https://via.placeholder.com/800x600.png' class='img-fluid rounded' alt='Placeholder' />",
+  "summary": 'Contra legem facit qui id facit quod lex prohibet. Nec dubitamus multa iter quae et nos invenerat. Praeterea iter est quasdam res quas ex communi. Lorem ipsum dolor sit amet, consectetur adipisici elit.',
+  "link": {
+    "url": "#",
+    "text":"Read More",
+    "modifier": "btn-primary"
+  },
+  "layout": "right",
+  "modifier": "container-fluid rounded",
 };

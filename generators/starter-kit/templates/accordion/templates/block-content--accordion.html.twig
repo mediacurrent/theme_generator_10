@@ -14,14 +14,11 @@
     'block-content--type-' ~ bundle|clean_class,
     'block-content--' ~ id,
     'block-content--view-mode-' ~ view_mode|clean_class,
-    'horizontal-align',
-    'container',
+    'bg-light mt-5 mt-lg-12 pt-5 pb-5 pt-lg-12 pb-lg-12 p-md-2',
   ]
 %}
 
 <div{{ attributes.addClass(classes) }}>
-  {{ title_prefix }}
-  {{ title_suffix }}
   {% block content %}
     {% if content.field_title %}
       {%
@@ -29,12 +26,12 @@
           "heading": {
             "title": content.field_title|field_value,
             "heading_level": "2",
-            "modifier": "heading--section",
+            "modifier": "text-dark mb-4 container-fluid",
           },
         } only
       %}
     {% endif %}
-    {% embed '@<%= themeNameMachine %>/accordion/accordion.twig' with { content: content } only %}
+    {% embed '@<%= themeNameMachine %>/accordion/accordion.twig' with { content: content, modifier: "container-fluid" } only %}
       {% block accordion_items %}
         {{ content.field_accordion_item }}
       {% endblock accordion_items %}

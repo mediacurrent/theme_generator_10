@@ -1,0 +1,25 @@
+{{ attach_library('<%= themeNameMachine %>/site-footer') }}
+
+<div class="site-footer {{ modifier }}">
+  <div class="container-fluid p-md-5 pt-8 pb-5">
+    <div class="row d-lg-flex flex-wrap justify-content-lg-between align-items-center">
+      <div class="col-lg-2">
+        {%
+          include '@<%= themeNameMachine %>/logo/logo.twig' with { style: logo_style, site_logo: site_logo } only
+        %}
+      </div>
+      <div class="col-lg-8 text-right justify-lg-content-end">
+        <div class="mb-9 fs-5 fw-semibold">
+          {%
+            include '@<%= themeNameMachine %>/menu/menu.twig' with { modifier: menu_modifier, items: links, item_modifier: link_item_modifier } only
+          %}
+        </div>
+        <div class="">
+          {%
+            include '@<%= themeNameMachine %>/social-icons/social-icons.twig' with { social_icons: social_icons } only
+          %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

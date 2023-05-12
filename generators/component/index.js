@@ -45,9 +45,6 @@ module.exports = class extends Generator {
     // Grab the theme machine name if it's passed in.
     const themeName = this.options.themeName || '';
     this.themeNameMachine = _.snakeCase(themeName);
-
-    // Check to see if we need to include a JS file.
-    this.includeJS = this.options.includeJs || false;
   }
 
   // Prompts need at least two arguments passed in to work:
@@ -93,12 +90,6 @@ ${chalk.blue('Make sure you\'re running this command from your theme root.')}`
       name: 'name',
       message: 'What should we name your component? EX: Hero',
       default: 'Hero'
-    },
-    {
-      name: 'includeJSBehavior',
-      type: 'confirm',
-      message: 'Would you like to include a JavaScript Behavior file?',
-      default: false
     }];
 
     return this.prompt(prompts).then(function (props) {
@@ -110,9 +101,6 @@ ${chalk.blue('Make sure you\'re running this command from your theme root.')}`
       this.componentName.raw = props.name;
       // Create a dashed version of the layout name.
       this.componentName.dashed = _.kebabCase(props.name);
-
-      // See if we need to include a JS behavior file.
-      this.includeJS = props.includeJSBehavior;
 
       // To access props later use this.props.someAnswer;
       this.props = props;
@@ -126,35 +114,15 @@ ${chalk.blue('Make sure you\'re running this command from your theme root.')}`
     const component = this.componentName.dashed;
 
     // Could prob break this out to it's own thing eventually.
-    if (this.includeJS) {
-      componentLibrary = {
-        [component]: {
-          css: {
-            component: {
-              [`dist/css/${component}.css`]: {}
-            }
-          },
-          js: {
-            [`dist/js/${component}.js`]: {}
-          },
-          dependencies: [
-            'core/drupal',
-            'core/jquery'
-          ]
-        }
-      };
-    }
-    else {
-      componentLibrary = {
-        [component]: {
-          css: {
-            component: {
-              [`dist/css/${component}.css`]: {}
-            }
+    componentLibrary = {
+      [component]: {
+        css: {
+          component: {
+            [`dist/css/${component}.css`]: {}
           }
         }
-      };
-    }
+      }
+    };
 
     // Add a blank line so the file is nicely formatted and the
     // appended data doesn't run into the current data within the file.
@@ -205,18 +173,6 @@ ${chalk.blue('Make sure you\'re running this command from your theme root.')}`
         themeNameMachine: this.themeNameMachine
       }
     );
-    if (this.includeJS) {
-      this.fs.copyTpl(
-        this.templatePath('_component/_component.ejs'),
-        // eslint-disable-next-line max-len
-        this.destinationPath('src/stories/components/' + this.componentName.dashed + '/' + this.componentName.dashed + '.js'),
-        {
-          camel: _.camelCase(this.componentName.raw),
-          dashed: this.componentName.dashed,
-          themeNameMachine: this.themeNameMachine
-        }
-      );
-    }
   }
 
   end() {

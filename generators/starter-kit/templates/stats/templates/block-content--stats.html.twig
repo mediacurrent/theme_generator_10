@@ -1,0 +1,37 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a block content.
+ *
+ * @see template_preprocess_block_content_template()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+    'block-content',
+    'block-content--type-' ~ bundle|clean_class,
+    'block-content--' ~ id,
+    'block-content--view-mode-' ~ view_mode|clean_class,
+    'mb-6 mb-lg-12',
+  ]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+  {% block content %}
+    {% embed '@<%= themeNameMachine %>/stats/stats.twig' with {
+        content: content,
+        title: content.field_title|field_value,
+        eyebrow: content.field_eyebrow|field_value,
+        summary: content.field_summary,
+        image: content.field_media|render,
+        modifier: content.field_stats_layout|field_value|render == 'dark' ? 'bg-black text-light' : '',
+        heading_modifier: 'text-light',
+    } only %}
+      {% block stats %}
+        {{ content.field_stats }}
+      {% endblock %}
+    {% endembed %}
+  {% endblock %}
+</div>

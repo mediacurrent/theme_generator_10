@@ -13,7 +13,9 @@
     'block-content',
     'block-content--type-' ~ bundle|clean_class,
     'block-content--' ~ id,
-    'block-content--view-mode-' ~ view_mode|clean_class
+    'block-content--view-mode-' ~ view_mode|clean_class,
+    'pt-5 pb-5 pt-lg-12 pb-lg-12',
+    'container-fluid',
   ]
 %}
 
@@ -23,11 +25,13 @@
   {% block content %}
     {% include '@<%= themeNameMachine %>/quote/quote.twig' with {
       "quote": {
-        "modifier_class": "",
+        "modifier_class": "p-3 pt-9 pb-9 bg-light rounded",
+        "logo": content.field_logo.0,
         "quote": content.field_quote.0,
         "image": content.field_thumb.0,
         "name": content.field_author.0,
-        "job": content.field_job_title.0
+        "job": content.field_job_title.0,
+        "layout": "left",
       }
     } only %}
   {% endblock %}

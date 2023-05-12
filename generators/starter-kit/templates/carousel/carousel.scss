@@ -1,94 +1,43 @@
 // Import site utilities.
-@import '../../global/utils/init';
+@import '../../global/bootstrap-init';
 
-.carousel-item {
-  position: relative;
-}
+// Carousel
 
-.carousel-item__content {
-  @include center-align(absolute);
-  background: $color-transparent-white;
-  min-width: 300px;
-  padding: 1rem 0.5rem;
-  top: 35%;
-  text-align: center;
+// scss-docs-start carousel-variables
+$carousel-control-color:             $white !default;
+$carousel-control-width:             15% !default;
+$carousel-control-opacity:           0.5 !default;
+$carousel-control-hover-opacity:     0.9 !default;
+$carousel-control-transition:        opacity 0.15s ease !default;
 
-  @include breakpoint($bp-xsm) {
-    padding: 1rem 1.5rem;
-  }
-}
+$carousel-indicator-width:           30px !default;
+$carousel-indicator-height:          3px !default;
+$carousel-indicator-hit-area-height: 10px !default;
+$carousel-indicator-spacer:          3px !default;
+$carousel-indicator-opacity:         0.5 !default;
+$carousel-indicator-active-bg:       $white !default;
+$carousel-indicator-active-opacity:  1 !default;
+$carousel-indicator-transition:      opacity 0.6s ease !default;
 
-.carousel-item__title {
-  @include wire-large-heading;
+$carousel-caption-width:             70% !default;
+$carousel-caption-color:             $white !default;
+$carousel-caption-padding-y:         1.25rem !default;
+$carousel-caption-spacer:            1.25rem !default;
 
-  @include breakpoint($bp-under-xsm) {
-    font-size: 1.25rem;
-  }
-}
+$carousel-control-icon-width:        2rem !default;
 
-// Overriding Slick styles for style guide
-// to match wireframes.
+$carousel-control-prev-icon-bg:      url('data:image/svg+xml,<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M27.3333 12.4998H7.04999L16.3667 3.18313L14 0.83313L0.666656 14.1665L14 27.4998L16.35 25.1498L7.04999 15.8331H27.3333V12.4998Z" fill="#111112"/></svg>') !default;
+$carousel-control-next-icon-bg:      url('data:image/svg+xml,<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 0.83313L11.65 3.18313L20.95 12.4998H0.666656V15.8331H20.95L11.65 25.1498L14 27.4998L27.3333 14.1665L14 0.83313Z" fill="#111112"/></svg>') !default;
 
-// Repositions prev & next button,
-// also makes them larger
-.carousel__slick.slick-slider {
+$carousel-transition-duration:       0.6s !default;
+$carousel-transition:                transform $carousel-transition-duration ease-in-out !default; // Define transform transition first if using multiple transitions (e.g., `transform 2s ease, opacity .5s ease-out`)
+// scss-docs-end carousel-variables
 
-  .slick-prev,
-  .slick-next {
-    top: 80%;
-    z-index: 1;
-    height: 50px;
-    width: 50px;
+// scss-docs-start carousel-dark-variables
+$carousel-dark-indicator-active-bg:  $black !default;
+$carousel-dark-caption-color:        $black !default;
+$carousel-dark-control-icon-filter:  invert(1) grayscale(100) !default;
+// scss-docs-end carousel-dark-variables
 
-    @include breakpoint($bp-xsm) {
-      top: 90%;
-    }
-
-    &::before {
-      font-size: 48px;
-
-      @include breakpoint($bp-under-xsm) {
-        font-size: 38px;
-      }
-    }
-  }
-
-  .slick-prev {
-    left: 20%;
-
-    @include breakpoint($bp-xsm) {
-      left: 40%;
-    }
-  }
-
-  .slick-next {
-    right: 20%;
-
-    @include breakpoint($bp-xsm) {
-      right: 40%;
-    }
-  }
-
-  // Make dots below carousel larger.
-  // Improves navigation UX, especially mobile.
-  .slick-dots {
-    bottom: -50px;
-
-    li {
-      height: 35px;
-      width: 35px;
-
-      button {
-        height: 35px;
-        width: 35px;
-
-        &::before {
-          font-size: 20px;
-          height: 35px;
-          position: initial;
-          width: 35px;
-        }
-      }
-    }
-  }
-}
+// Include Carousel styles.
+@import 'bootstrap/scss/carousel';

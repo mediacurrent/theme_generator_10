@@ -1,0 +1,28 @@
+// Import site utilities.
+@import '../../global/bootstrap-init';
+
+.social-icons {
+  margin-bottom: 0;
+
+  .list-inline-item {
+    margin-right: 3rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    a {
+
+      &.social-icon-dark {
+
+        svg {
+          fill: $white;
+
+          path {
+            fill: $white;
+          }
+        }
+      }
+    }
+  }
+}

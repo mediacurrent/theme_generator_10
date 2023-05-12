@@ -1,0 +1,45 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a block content.
+ *
+ * @see template_preprocess_block_content_template()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+    'block-content',
+    'block-content--type-' ~ bundle|clean_class,
+    'block-content--' ~ id,
+    'block-content--view-mode-' ~ view_mode|clean_class,
+    'pt-6 pb-6 pt-lg-12 pb-lg-12',
+    'container-fluid',
+  ]
+%}
+
+{%
+  set link = {
+    url: content.field_link[0]['#url'],
+    text: content.field_link[0]['#title'],
+    modifier:  '',
+  }
+%}
+
+<div{{ attributes.addClass(classes) }}>
+  {% block content %}
+    {% embed '@<%= themeNameMachine %>/carousel-multi/carousel-multi.twig' with {
+      id: id,
+      content: content,
+      title: content.field_title|field_value,
+      link: link,
+    } only %}
+      {% block carousel_items %}
+        {% for item in content.field_carousel_item['#items'] %}
+          {{ content.field_carousel_item[loop.index0] }}
+        {% endfor %}
+      {% endblock %}
+    {% endembed %}
+  {% endblock %}
+</div>

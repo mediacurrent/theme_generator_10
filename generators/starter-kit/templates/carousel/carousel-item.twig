@@ -1,13 +1,9 @@
-<li class="carousel-item">
-  <div class="carousel-item__media">
-    {%
-      include '@<%= themeNameMachine %>/media/media.twig' with {
-        "image": item.image,
-      } only
-    %}
-  </div>
-  {% if item.title %}
-    <div class="carousel-item__content">
+<div class="carousel-item {{ item.active ? 'active' : ''}}">
+  {% if item.image %}
+    {{ item.image }}
+  {% endif %}
+  <div class="carousel-caption">
+    {% if item.title %}
       {%
         include '@<%= themeNameMachine %>/heading/heading.twig' with {
           "heading": {
@@ -18,15 +14,26 @@
         } only
       %}
       {% if item.button.text %}
-        {%
-          include '@<%= themeNameMachine %>/button/button.twig' with {
-            "button": {
-              "text": item.button.text,
-              "url": item.button.url,
-            }
-          } only
-        %}
+        <div class="p-2">
+          {%
+            include '@<%= themeNameMachine %>/button/button.twig' with {
+              "button": {
+                "text": item.button.text,
+                "url": item.button.url,
+                "modifier": item.button.modifier
+              }
+            } only
+          %}
+        </div>
       {% endif %}
-    </div>
-  {% endif %}
-</li>
+    {% endif %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carousel{{ id }}" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carousel{{ id }}" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

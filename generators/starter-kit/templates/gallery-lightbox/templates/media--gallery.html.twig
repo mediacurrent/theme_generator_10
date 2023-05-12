@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Theme override to display a media item.
+ *
+ * Available variables:
+ * - name: Name of the media.
+ * - content: Media content.
+ *
+ * @see template_preprocess_media()
+ *
+ * @ingroup themeable
+ */
+#}
+{% if content %}
+  {%
+    include '@<%= themeNameMachine %>/gallery-lightbox/gallery-lightbox-item.twig' with {
+      "media": content.field_image|render,
+      "media_thumb": content.field_image|render,
+      "media_description": "",
+      "id": 'media-' ~ media.id ~ random(),
+    } only
+  %}
+{% endif %}

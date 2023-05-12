@@ -1,0 +1,34 @@
+// Import site utilities.
+@import '../../global/bootstrap-init';
+
+// Style the icon.
+.btn span {
+  float: right;
+  margin-left: 7px;
+  margin-top: 2px;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+}
+
+// Override the hove button background color.
+.btn:hover {
+  background-color: $secondary;
+}
+
+// Override border color for primary button.
+body .btn-primary {
+  border-color: $primary;
+}
+
+body .btn-primary:hover {
+  color: $white;
+}
+
+body .btn-outline-primary {
+  background-color: $white;
+}
+
+.btn-light:hover {
+  color: $white !important;
+}

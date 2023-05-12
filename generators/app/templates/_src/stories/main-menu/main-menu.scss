@@ -1,0 +1,27 @@
+@import '../../global/bootstrap-init';
+
+@import 'bootstrap/scss/dropdown';
+@import 'bootstrap/scss/nav';
+@import 'bootstrap/scss/navbar';
+
+.navbar-brand {
+
+  .logo {
+    display: block;
+    width: 166px;
+  }
+}
+
+.navbar-nav {
+
+  .nav-link.nav-item {
+    padding-left: 0;
+    padding-right: 0;
+
+    &.active {
+      text-decoration: underline;
+      text-decoration-color: $secondary;
+      text-underline-offset: 8px;
+    }
+  }
+}

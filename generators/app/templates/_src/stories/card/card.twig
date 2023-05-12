@@ -1,0 +1,63 @@
+{{ attach_library('<%= themeNameMachine %>/card') }}
+
+<div class="card border-0 {{ card.modifier }}
+  {{- attributes ? ' ' ~ attributes.class -}}">
+  {% block card_media %}
+    {% if card.media %}
+      {{ card.media }}
+    {% endif %}
+  {% endblock %}
+
+  <div class="card-body p-0 mt-2 {{ card.body_modifier }}">
+    {% if card.tags %}
+      <ul class="list-inline mb-2">
+        {% for tag in card.tags %}
+          <li class="list-inline-item">
+            {% include '@<%= themeNameMachine %>/badge/badge.twig' with {
+              "tag": tag,
+              "modifier": 'text-bg-primary'
+            } only %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {%
+      include '@<%= themeNameMachine %>/heading/heading.twig' with {
+        "heading": card.heading
+      } only
+    %}
+    <p class="card-text fs-6">
+      {% if card.summary_text %}
+        {{ card.summary_text }}
+      {% endif %}
+    </p>
+    {% if card.link.url %}
+      <ul class="list-inline mb-0">
+        {% if card.link.url %}
+          <li class="list-inline-item">
+            {% include '@<%= themeNameMachine %>/button/button.twig' with {
+              "button": {
+                "url": card.link.url,
+                "text": card.link.text,
+                "icon": 'arrow_right_alt',
+                "modifier": 'btn btn-primary px-4'
+              }
+            } only %}
+          </li>
+        {% endif %}
+        {% if card.link2.url %}
+          <li class="list-inline-item">
+            {% include '@<%= themeNameMachine %>/button/button.twig' with {
+              "button": {
+                "url": card.link2.url,
+                "text": card.link2.text,
+                "icon": 'arrow_right_alt',
+                "modifier": 'btn btn-outline-primary px-4'
+              }
+            } only %}
+          </li>
+        {% endif %}
+      </ul>
+    {% endif %}
+  </div>
+</div>

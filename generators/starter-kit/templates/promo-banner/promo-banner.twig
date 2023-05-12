@@ -1,0 +1,62 @@
+{{ attach_library('<%= themeNameMachine %>/promo-banner') }}
+
+{% import _self as banner %}
+
+<div class="{{ modifier }}">
+  <div class="container-fluid">
+    <div class="row flex-lg-row-reverse align-items-center py-6 py-lg-20 justify-content-center">
+      <div class="col-lg-5 {{ image ? '' : 'order-1 order-lg-0' }} col-xxxl-4">
+        {% if image %}
+          <div class="mb-3">
+            {{ image }}
+          </div>
+        {% else %}
+          {{ banner.banner_copy(image, summary, text_modifier, link, button_modifier) }}
+        {% endif %}
+      </div>
+
+      <div class="col-lg-5 col-xxxl-3">
+        {% if eyebrow %}
+          <div class="eyebrow mb-4">
+            {% include '@<%= themeNameMachine %>/badge/badge.twig' with {
+              tag: eyebrow,
+              modifier: eyebrow_modifier
+            } only %}
+          </div>
+        {% endif %}
+        {%
+          include '@<%= themeNameMachine %>/heading/heading.twig' with {
+            "heading": {
+              title: title,
+              heading_level: '2',
+              modifier: 'display-3 mb-3 fw-bold ' ~ text_modifier
+            }
+          } only
+        %}
+        {% if image %}
+          {{ banner.banner_copy(image, summary, text_modifier, link, button_modifier) }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% macro banner_copy(image, summary, text_modifier, link, button_modifier) %}
+  <div class="{{ text_modifier }}">
+    {% if summary %}
+      {{ summary }}
+    {% endif %}
+  </div>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-4">
+    {% if link %}
+      {% include '@<%= themeNameMachine %>/button/button.twig' with {
+        "button": {
+          "url": link.url,
+          "text": link.text ? link.text : 'Read more'|t,
+          "icon": 'arrow_right_alt',
+          "modifier": button_modifier
+        }
+      } only %}
+    {% endif %}
+  </div>
+{% endmacro %}

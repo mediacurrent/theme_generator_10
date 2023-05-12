@@ -1,55 +1,27 @@
-// Import site utilities.
-@import '../../global/utils/init';
+@import '../../global/bootstrap-init';
 
+// Make the image fit as a cover to limit the total height.
 .hero {
-  position: relative;
-}
+  border-radius: 0;
 
-.hero__content {
-  @include center-align(absolute);
-  background: $color-transparent-white;
-  margin-right: -50%;
-  max-width: 95%;
-  padding: 1rem;
-  text-align: center;
+  // Add a mask to the overlay.
+  .card-img-overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    text-align: center;
+  }
 
-  @include breakpoint($bp-xsm) {
-    max-width: 750px;
-    padding: 2rem 3rem;
+  .heading {
+
+    strong {
+      color: $secondary;
+      font-weight: inherit;
+    }
   }
 }
 
-.hero__heading {
-  @include wire-large-heading;
-  margin-bottom: 0.5rem;
+.overlay {
 
-  @include breakpoint($bp-xsm) {
-    margin-bottom: 1rem;
-  }
-}
-
-.hero__eyebrow {
-  color: $color-tundora;
-  display: block;
-  font-size: 0.75rem;
-  font-weight: normal;
-  letter-spacing: 0.15rem;
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
-
-  @include breakpoint($bp-xsm) {
-    font-size: 0.875rem;
-    margin-bottom: 1.5rem;
-  }
-}
-
-.hero__body {
-  font-size: 1rem;
-  line-height: 1.625;
-  margin-bottom: 0.5rem;
-
-  @include breakpoint($bp-xsm) {
-    font-size: 1.5rem;
-    margin-bottom: 3rem;
+  img {
+    object-fit: cover;
   }
 }

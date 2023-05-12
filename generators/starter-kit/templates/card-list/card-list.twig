@@ -1,27 +1,27 @@
 {{ attach_library('<%= themeNameMachine %>/card-list') }}
 
 {% if section_title %}
-    {%
-      include '@<%= themeNameMachine %>/heading/heading.twig' with {
-        "heading": {
-          "title": section_title,
-          "heading_level": 2,
-          "modifier": "heading--section card-list__title"
-        }
-      } only
-    %}
+  {%
+    include '@<%= themeNameMachine %>/heading/heading.twig' with {
+      "heading": {
+        "title": section_title,
+        "heading_level": 2,
+        "modifier": "display-4"
+      }
+    } only
+  %}
 {% endif %}
 
-<ul class="card-list">
+<div class="row mt-4">
   {% block card_items %}
-      {% for item in items %}
-        <li class="card-list__item">
-          {%
-            include '@<%= themeNameMachine %>/card/card.twig' with {
-              "card": item.card
-            } only
-          %}
-        </li>
-      {% endfor %}
+    {% for item in items %}
+      <div class="col-sm-4 mb-4">
+        {%
+          include '@<%= themeNameMachine %>/card/card.twig' with {
+            "card": item.card
+          } only
+        %}
+      </div>
+    {% endfor %}
   {% endblock %}
-</ul>
+</div>

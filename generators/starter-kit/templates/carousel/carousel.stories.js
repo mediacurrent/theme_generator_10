@@ -3,7 +3,7 @@ import CarouselTemplate from "./carousel.twig";
 import "./carousel.es6.js";
 
 export default {
-  title: "General/Carousel",
+  title: "Editorial/Carousel",
   argTypes: {
     list: {
       description: "Define the array of carousel items",
@@ -17,34 +17,35 @@ export default {
 
 export const Carousel = CarouselTemplate.bind({});
 
-Carousel.play = async () => {
-  Drupal.attachBehaviors();
-};
-
 Carousel.args = {
+  "id": "single",
   "list": [
     {
-      "image": "<img src='./images/gallery7.jpg' width='100%' alt='test image' />",
+      "active": true,
+      "image": "<img src='https://via.placeholder.com/640x480.png' class='d-block w-100' alt='test image' />",
       "title": "Title Lorem Ipsum Dolor",
       "button": {
         "text": "Button Text",
-        "url": "#"
+        "url": "#",
+        "modifier": "btn-primary",
       }
     },
     {
-      "image": "<img src='./images/gallery7.jpg' width='100%' alt='test image' />",
-      "title": "Title Lorem Ipsum Dolor",
+      "image": "<img src='https://via.placeholder.com/640x480.png' class='d-block w-100' alt='test image' />",
+      "title": "Title Lorem Ipsum Dolor 2",
       "button": {
         "text": "Button Text",
-        "url": "#"
+        "url": "#",
+        "modifier": "btn-primary",
       }
     },
     {
-      "image": "<img src='./images/gallery7.jpg' width='100%' alt='test image' />",
-      "title": "Title Lorem Ipsum Dolor",
+      "image": "<img src='https://via.placeholder.com/640x480.png' class='d-block w-100' alt='test image' />",
+      "title": "Title Lorem Ipsum Dolor 3",
       "button": {
         "text": "Button Text",
-        "url": "#"
+        "url": "#",
+        "modifier": "btn-primary",
       }
     }
   ]

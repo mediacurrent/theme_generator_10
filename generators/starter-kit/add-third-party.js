@@ -1,63 +1,35 @@
 // For specific components we need to add additional dependencies.
 module.exports = function addThirdParty(libraries) {
 
-  // See if Slick is one of the libraries already.
-  const containsSlick = libraries.find(lib => lib['slick']);
-  // See if the libraries include the carousel library because
-  // if so, we need to add the SlickJS dependency.
-  const containsCarousel = libraries.find(lib => lib['carousel']);
-  const containsGalleryCarousel = libraries.find(lib => lib['gallery-carousel']);
+  // See if Bootstrap is one of the libraries already.
+  const containsBootstrap = libraries.find(lib => lib['bootstrap-js']);
 
-  // See if Colorbox is one of the libraries already.
-  const containsColorbox = libraries.find(lib => lib['colorbox']);
-  const containsGalleryLightbox = libraries.find(lib => lib['gallery-lightbox']);
+  // See if Popover is one of the libraries already.
+  const containsPopover = libraries.find(lib => lib['popover-cdn']);
 
-  // If slick hasn't been added yet and it's needed, add it.
-  if (!containsSlick && (containsCarousel || containsGalleryCarousel)) {
-    const slick = {
-      ['slick']: {
-        css: {
-          component: {
-            ['dist/css/slick.css']: {},
-            ['dist/css/slick-theme.css']: {}
-          }
-        },
+  // If bootstrap-js hasn't been added yet and it's needed, add it.
+  if (!containsBootstrap) {
+    const bootstrap = {
+      ['bootstrap-js']: {
         js: {
-          ['dist/js/slick.min.js']: { minified: true }
+          ['//cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js']: { }
         },
-        dependencies: [
-          'core/drupal',
-          'core/drupalSettings',
-          'core/jquery.once',
-          'core/jquery'
-        ]
       }
     };
-    // Add slick to the libraries object.
-    libraries.push(slick);
+    // Add bootstrap to the libraries object.
+    libraries.push(bootstrap);
   }
-  // If colorbox hasn't been added yet and it's needed, add it.
-  if (!containsColorbox && containsGalleryLightbox) {
-    const colorbox = {
-      ['colorbox']: {
-        css: {
-          component: {
-            ['dist/css/colorbox.css']: {}
-          }
-        },
+  // If popover hasn't been added yet and it's needed, add it.
+  if (!containsPopover) {
+    const popover = {
+      ['popover-cdn']: {
         js: {
-          ['dist/js/jquery.colorbox.js']: { minified: true }
+          ['//cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js']: { }
         },
-        dependencies: [
-          'core/drupal',
-          'core/drupalSettings',
-          'core/jquery.once',
-          'core/jquery'
-        ]
       }
     };
-    // Add colorbox to the libraries object.
-    libraries.push(colorbox);
+    // Add popover to the libraries object.
+    libraries.push(popover);
   }
 
   return libraries;

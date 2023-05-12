@@ -18,17 +18,15 @@
 %}
 
 <div{{ attributes.addClass(classes) }}>
-  {{ title_prefix }}
-  {{ title_suffix }}
   {% block content %}
     {% if content.field_title %}
-      <div class="container">
+      <div class="container-fluid">
         {%
           include '@<%= themeNameMachine %>/heading/heading.twig' with {
             "heading": {
               "title": content.field_title|field_value,
               "heading_level": "2",
-              "modifier": "heading--section",
+              "modifier": "mb-3",
             },
           } only
         %}

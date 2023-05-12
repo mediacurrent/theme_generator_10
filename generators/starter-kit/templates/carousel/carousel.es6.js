@@ -1,24 +1,23 @@
 /**
  * @file
- * Behaviors for the Filter Accordion.
+ * Behaviors for the Carousel.
  */
 /* eslint-disable max-len */
 
-(function ($, Drupal) {
-
+(function (Drupal) {
   /**
    * Setup and attach the Carousel behaviors.
    *
    * @type {Drupal~behavior}
    */
   Drupal.behaviors.carousel = {
-    attach: function() {
-      $('.carousel__slick')
-        .not('.slick-initialized')
-        .slick({
-          dots: true
-        });
+    attach: function () {
+      const carouselItem = document.querySelector(
+        '.carousel-single .carousel-item:first-child'
+      );
+      if (carouselItem) {
+        carouselItem.classList.add('active');
+      }
     }
   };
-
-})(jQuery, Drupal);
+})(Drupal);

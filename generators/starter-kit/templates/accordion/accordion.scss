@@ -1,114 +1,43 @@
 // Import site utilities.
-@import '../../global/utils/init';
+@import '../../global/bootstrap-init';
 
-.accordion__wrapper {
-  max-width: none;
-  position: relative;
-  margin-top: 50px;
-}
+// Accordion
 
-.accordion {
-  background: $color-white;
-  padding: 22px 16px 22px 30px;
-  transition: background 0.75s;
-  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.2);
-  border: 0;
-  margin-bottom: 10px;
-  width: 112%;
-  margin-left: -6%;
+// scss-docs-start accordion-variables
+$accordion-padding-y:                     1rem !default;
+$accordion-padding-x:                     1.25rem !default;
+$accordion-color:                         $body-color !default; // Sass variable because of $accordion-button-icon
+$accordion-bg:                            $body-bg !default;
+// Ignite override.
+$accordion-border-width:                  0 !default;
+$accordion-border-color:                  var(--#{$prefix}border-color) !default;
+$accordion-border-radius:                 $border-radius !default;
+$accordion-inner-border-radius:           subtract($accordion-border-radius, $accordion-border-width) !default;
 
-  @include breakpoint($bp-xsm) {
-    width: 100%;
-    margin-left: 0;
-  }
+$accordion-body-padding-y:                $accordion-padding-y !default;
+$accordion-body-padding-x:                $accordion-padding-x !default;
 
-  &:first-of-type {
-    border: 0;
-  }
+$accordion-button-padding-y:              $accordion-padding-y !default;
+$accordion-button-padding-x:              $accordion-padding-x !default;
+$accordion-button-color:                  $accordion-color !default;
+$accordion-button-bg:                     var(--#{$prefix}accordion-bg) !default;
+$accordion-transition:                    $btn-transition, border-radius 0.15s ease !default;
+// Ignite override.
+$accordion-button-active-bg:              var(--#{$prefix}accordion-bg) !default;
+$accordion-button-active-color:           shade-color($primary, 10%) !default;
 
-  &.open {
-    background: $color-white;
+$accordion-button-focus-border-color:     $input-focus-border-color !default;
+$accordion-button-focus-box-shadow:       $btn-focus-box-shadow !default;
 
-    .accordion__heading {
-      font-weight: 600;
-    }
+$accordion-icon-width:                    1.25rem !default;
+$accordion-icon-color:                    $accordion-button-color !default;
+$accordion-icon-active-color:             $accordion-button-active-color !default;
+$accordion-icon-transition:               transform 0.2s ease-in-out !default;
+$accordion-icon-transform:                rotate(-180deg) !default;
 
-    svg {
-      transform: rotate(-180deg);
-    }
-  }
+$accordion-button-icon:         url('data:image/svg+xml,<svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.41 0.589844L6 5.16984L10.59 0.589846L12 1.99985L6 7.99984L-2.46532e-07 1.99984L1.41 0.589844Z" fill="#323232"/></svg>') !default;
+$accordion-button-active-icon:  url('data:image/svg+xml,<svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.41 0.589844L6 5.16984L10.59 0.589846L12 1.99985L6 7.99984L-2.46532e-07 1.99984L1.41 0.589844Z" fill="#323232"/></svg>') !default;
+// scss-docs-end accordion-variables
 
-  .field--type-link {
-    margin-top: 20px;
-
-    a {
-      color: $color-black;
-      font-size: 16px;
-      font-weight: bold;
-      line-height: 26px;
-      position: relative;
-      text-decoration: none;
-      margin-top: 21px;
-
-      &::after {
-        content: '>';
-        margin-left: 10px;
-      }
-    }
-  }
-}
-
-.accordion__toggle {
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  outline: inherit;
-  padding: 0;
-  position: relative;
-  text-align: left;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-
-  &::after {
-    display: none;
-  }
-
-  svg {
-    fill: $color-blue;
-    margin-top: 12px;
-  }
-}
-
-.accordion__heading {
-  color: #414751;
-  font-size: 18px;
-  font-weight: 500;
-
-  @include breakpoint($bp-sm) {
-    font-size: 24px;
-  }
-}
-
-.accordion__content {
-  max-height: 0;
-  margin-top: 0;
-  overflow: hidden;
-  padding: 0 32px 0 0;
-  transition: max-height 0.15s, margin-top 0.35s;
-  color: #414751;
-  font-family: 'Raleway', sans-serif;
-  font-size: 18px;
-  font-weight: normal;
-  line-height: 26px;
-
-  .open & {
-    margin-top: 20px;
-    max-height: 9999vh;
-  }
-
-  img {
-    position: relative;
-    border: 15px solid $color-blue;
-  }
-}
+// Include Accordion styles.
+@import 'bootstrap/scss/accordion';

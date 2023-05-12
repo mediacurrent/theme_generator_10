@@ -1,15 +1,16 @@
 {{ attach_library('<%= themeNameMachine %>/carousel') }}
 
-<section class="carousel__wrapper{{ attributes ? ' ' ~ attributes.class}}">
-  <ul class="carousel__list carousel__slick">
+<div id="carousel{{ id }}" class="carousel-single carousel slide{{ attributes ? ' ' ~ attributes.class}}" data-bs-ride="carousel">
+  <div class="carousel-inner">
     {% block carousel_items %}
       {% for item in list %}
         {%
           include '@<%= themeNameMachine %>/carousel/carousel-item.twig' with {
+            "id": id,
             "item": item
           } only
         %}
       {% endfor %}
     {% endblock %}
-  </ul>
-</section>
+  </div>
+</div>

@@ -1,2 +1,6 @@
 // Import site utilities.
-@import '../../global/utils/init';
+@import '../../global/bootstrap-init';
+
+iframe {
+  width: 100%;
+}

@@ -1,0 +1,53 @@
+// Row
+//
+// Rows contain your columns.
+
+@if $enable-grid-classes {
+
+  .row {
+
+    @include make-row();
+
+    // Ignite: Override gutters per breakpoint.
+    @include media-breakpoint-up(sm) {
+      @include make-row($grid-gutter-width-sm);
+    }
+
+    @include media-breakpoint-up(md) {
+      @include make-row($grid-gutter-width-md);
+    }
+
+    @include media-breakpoint-up(xl) {
+      @include make-row($grid-gutter-width-xl);
+    }
+
+    @include media-breakpoint-up(xxl) {
+      @include make-row($grid-gutter-width-xxl);
+    }
+
+    > * {
+      @include make-col-ready();
+    }
+  }
+}
+
+@if $enable-cssgrid {
+
+  .grid {
+    display: grid;
+    grid-template-rows: repeat(var(--#{$prefix}rows, 1), 1fr);
+    grid-template-columns: repeat(var(--#{$prefix}columns, #{$grid-columns}), 1fr);
+    gap: var(--#{$prefix}gap, #{$grid-gutter-width});
+
+    @include make-cssgrid();
+  }
+}
+
+
+// Columns
+//
+// Common styles for small and large grid columns
+
+@if $enable-grid-classes {
+  @include make-grid-columns();
+}

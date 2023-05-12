@@ -1,0 +1,47 @@
+@import '../../global/bootstrap-init';
+
+// Override sidebar.
+.glb-grid-item,
+.layout-builder-browser-block-item {
+  width: calc(50% - 20px);
+  color: var(--bs-secondary);
+  padding-bottom: 10px;
+}
+
+.glb-grid-item svg,
+.layout-builder-browser-block-item svg,
+.glb-grid-item img,
+.layout-builder-browser-block-item img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.glb-layout-builder-browser .glb-claro-details__wrapper {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+// Update help block size.
+.block-help-block {
+  font-size: 12px;
+
+  p {
+    margin-bottom: 0.5rem;
+  }
+}
+
+body .ui-dialog .ui-dialog-titlebar {
+  line-height: 2rem;
+}
+
+/**
+ * Hide handle.
+ */
+#layout-builder-modal a.tabledrag-handle .handle {
+  display: none;
+}
+
+body #layout-builder-modal ul {
+  background: $white;
+}

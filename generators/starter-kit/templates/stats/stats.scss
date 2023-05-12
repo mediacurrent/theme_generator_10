@@ -1,0 +1,14 @@
+// Import site utilities.
+@import '../../global/bootstrap-init';
+
+.stats-item {
+
+  .material-symbols-outlined {
+    font-size: 3rem;
+  }
+
+  img {
+    width: 32px;
+    margin-bottom: 1rem;
+  }
+}

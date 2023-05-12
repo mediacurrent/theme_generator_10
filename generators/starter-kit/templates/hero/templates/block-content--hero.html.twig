@@ -13,36 +13,52 @@
     'block-content',
     'block-content--type-' ~ bundle|clean_class,
     'block-content--' ~ id,
-    'block-content--view-mode-' ~ view_mode|clean_class
+    'block-content--view-mode-' ~ view_mode|clean_class,
+    'container-fluid',
   ]
 %}
 
+{%
+  set layout = content.field_hero_layout|field_value|render
+%}
+
+{% set modifier = 'border-0' %}
+{% if layout == 'overlay' %}
+  {% set modifier = 'bg-dark text-white' %}
+{% endif %}
+
+{% set image_view_mode = 'default' %}
+{% if layout == 'image_left' or layout == 'image_right' %}
+  {% set image_view_mode = 'hero_square' %}
+  {% set classes = classes|merge(['mb-6 mb-lg-8']) %}
+{% elseif layout == 'image_top' or layout == 'image_bottom' %}
+  {% set image_view_mode = 'hero' %}
+  {% set classes = classes|merge(['mb-6 mb-lg-8']) %}
+{% else %}
+  {% set classes = classes|merge(['mb-8 mb-lg-16']) %}
+{% endif %}
+
 <div{{ attributes.addClass(classes) }}>
-  {{ title_prefix }}
-  {{ title_suffix }}
   {% block content %}
     {% include '@<%= themeNameMachine %>/hero/hero.twig' with {
-      "hero": {
-        "media": {
-          "image": content.field_media
-        },
-        "eyebrow": {
-          "text": content.field_subhead|render|trim is not empty ? content.field_subhead|field_value,
-          "modifier": "hero__eyebrow"
-        },
-        "heading": {
-          "title": content.field_title|field_value,
-          "level": "2",
-          "modifier": "hero__heading"
-        },
-        "body": {
-          "body_text": content.field_summary|render|trim is not empty ? content.field_summary,
-          "modifier": "hero__body"
-        },
-        "button": {
-          "text": content.field_link[0]['#title'],
-          "url": content.field_link[0]['#url']
-        }
+      "modifier": modifier,
+      "layout": layout,
+      "image": drupal_field('field_media', 'block_content', id, image_view_mode),
+      "eyebrow": content.field_eyebrow|field_value,
+      "heading": {
+        "title": content.field_heading|field_value,
+        "level": "2",
+        "modifier": "display-3 mb-2 fw-bold " ~ (layout == 'overlay' ? 'text-white' : 'text-dark')
+      },
+      "body": {
+        "body_text": content.field_summary|render|trim is not empty ? content.field_summary,
+        "modifier": "mb-3"
+      },
+      "button": {
+        "text": content.field_link[0]['#title'],
+        "url": content.field_link[0]['#url'],
+        "icon": 'arrow_right_alt',
+        "modifier": "btn-primary"
       }
     } only %}
   {% endblock %}

@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a block content.
+ *
+ * @see template_preprocess_block_content_template()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+    'block-content',
+    'block-content--type-' ~ bundle|clean_class,
+    'block-content--' ~ id,
+    'block-content--view-mode-' ~ view_mode|clean_class,
+    'mb-6 mb-lg-12',
+    'container-fluid',
+  ]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+  {% block content %}
+    {% include '@<%= themeNameMachine %>/cta/cta.twig' with {
+      "button": {
+        "text": content.field_link[0]['#title'],
+        "url": content.field_link[0]['#url'],
+        "icon": 'arrow_right_alt',
+        "modifier": "btn-primary"
+      }
+    } only %}
+  {% endblock %}
+</div>

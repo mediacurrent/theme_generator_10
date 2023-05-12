@@ -1,9 +1,8 @@
 import "./gallery-lightbox.scss";
-import "./gallery-lightbox.es6.js";
 import GalleryLightboxTemplate from "./gallery-lightbox.twig";
 
 export default {
-  title: "General/GalleryLightbox",
+  title: "Editorial/Gallery",
   argTypes: {
     "section_title": {
       description: "The title of the gallery lightbox component",
@@ -23,54 +22,58 @@ export default {
   },
 };
 
-export const GalleryLightbox = GalleryLightboxTemplate.bind({});
+export const Gallery = GalleryLightboxTemplate.bind({});
 
-GalleryLightbox.play = async () => {
-  Drupal.attachBehaviors();
-};
-
-GalleryLightbox.args = {
+Gallery.args = {
   "section_title": "Optional Title",
   "intro_text": "<p>Optional summary text, turpis at luctus finibus, erat lectus convallis velit, at sodales purus lacus quis magna. Curabitur imperdiet sapien libero, fringilla ullamcorper nibh ullamcorper vitae. Proin sed luctus augue.</p>",
   "items": [
     {
-      "media": "./images/gallery1.jpg",
-      "media_thumb": "./images/gallery1--thumb.jpg",
+      "id": "exampleLightbox1",
+      "media": '<img src="./images/gallery1.jpg" width="100%" alt="Gallery 1"/>',
+      "media_thumb": '<img src="./images/gallery1--thumb.jpg" class="img-fluid" alt="Gallery 1"/>',
       "media_description": "Surfing photo 1 here!"
     },
     {
-      "media": "./images/gallery2.jpg",
-      "media_thumb": "./images/gallery2--thumb.jpg",
+      "id": "exampleLightbox2",
+      "media": '<img src="./images/gallery2.jpg" width="100%" alt="Gallery 2"/>',
+      "media_thumb": '<img src="./images/gallery2--thumb.jpg" class="img-fluid" alt="Gallery 2"/>',
       "media_description": "Surfing photo 2 here!"
     },
     {
-      "media": "./images/gallery3.jpg",
-      "media_thumb": "./images/gallery3--thumb.jpg",
+      "id": "exampleLightbox3",
+      "media": '<img src="./images/gallery3.jpg" width="100%" alt="Gallery 3"/>',
+      "media_thumb": '<img src="./images/gallery3--thumb.jpg" class="img-fluid" alt="Gallery 3"/>',
       "media_description": "Surfing photo 3 here!"
     },
     {
-      "media": "./images/gallery4.jpg",
-      "media_thumb": "./images/gallery4--thumb.jpg",
+      "id": "exampleLightbox4",
+      "media": '<img src="./images/gallery4.jpg" width="100%" alt="Gallery 4"/>',
+      "media_thumb": '<img src="./images/gallery4--thumb.jpg" class="img-fluid" alt="Gallery 4"/>',
       "media_description": "Surfing photo 4 here!"
     },
     {
-      "media": "./images/gallery5.jpg",
-      "media_thumb": "./images/gallery5--thumb.jpg",
+      "id": "exampleLightbox5",
+      "media": '<img src="./images/gallery5.jpg" width="100%" alt="Gallery 5"/>',
+      "media_thumb": '<img src="./images/gallery5--thumb.jpg" class="img-fluid" alt="Gallery 5"/>',
       "media_description": "Surfing photo 5 here!"
     },
     {
-      "media": "./images/gallery6.jpg",
-      "media_thumb": "./images/gallery6--thumb.jpg",
+      "id": "exampleLightbox6",
+      "media": '<img src="./images/gallery6.jpg" width="100%" alt="Gallery 6"/>',
+      "media_thumb": '<img src="./images/gallery6--thumb.jpg" class="img-fluid" alt="Gallery 6"/>',
       "media_description": "Surfing photo 6 here!"
     },
     {
-      "media": "./images/gallery7.jpg",
-      "media_thumb": "./images/gallery7--thumb.jpg",
+      "id": "exampleLightbox7",
+      "media": '<img src="./images/gallery7.jpg" width="100%" alt="Gallery 7"/>',
+      "media_thumb": '<img src="./images/gallery7--thumb.jpg" class="img-fluid" alt="Gallery 7"/>',
       "media_description": "Surfing photo 7 here!"
     },
     {
-      "media": "./images/gallery8.jpg",
-      "media_thumb": "./images/gallery8--thumb.jpg",
+      "id": "exampleLightbox8",
+      "media": '<img src="./images/gallery8.jpg" width="100%" alt="Gallery 8"/>',
+      "media_thumb": '<img src="./images/gallery8--thumb.jpg" class="img-fluid" alt="Gallery 8"/>',
       "media_description": "Surfing photo 8 here!"
     }
   ]

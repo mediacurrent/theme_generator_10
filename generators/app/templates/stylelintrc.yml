@@ -162,7 +162,7 @@ rules:
   ## Declaration
   # Disallow !important within declarations.
   # https://stylelint.io/user-guide/rules/declaration-no-important/
-  declaration-no-important: true
+  # declaration-no-important: true
 
   # Specify a blacklist of disallowed property and value pairs within declarations.
   # https://stylelint.io/user-guide/rules/declaration-property-value-blacklist/

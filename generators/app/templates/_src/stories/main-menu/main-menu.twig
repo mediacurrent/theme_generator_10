@@ -1,0 +1,93 @@
+{#
+/**
+ * @file
+ * Theme override to display a menu.
+ *
+ * Available variables:
+ * - menu_name: The machine name of the menu.
+ * - items: A nested list of menu items. Each menu item contains:
+ *   - attributes: HTML attributes for the menu item.
+ *   - below: The menu item child items.
+ *   - title: The menu link title.
+ *   - url: The menu link url, instance of \Drupal\Core\Url
+ *   - localized_options: Menu link localized options.
+ *   - is_expanded: TRUE if the link has visible children within the current
+ *     menu tree.
+ *   - is_collapsed: TRUE if the link has children within the current menu tree
+ *     that are not currently visible.
+ *   - in_active_trail: TRUE if the link is in the active trail.
+ */
+#}
+{{ attach_library('<%= themeNameMachine %>/main-menu') }}
+
+{% import _self as menus %}
+
+<nav class="navbar navbar-expand-lg pt-3 pb-3 {{ modifier }}">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">{% include '@<%= themeNameMachine %>/logo/logo.twig' with { modifier: "", style: "logo-dark", logo: site_logo } %}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-center mt-3 mt-lg-0" id="navbarSupportedContent">
+      {{ menus.build_menu(items, attributes, 0, modifier, link_modifier) }}
+
+      <div class="justify-content-end d-lg-none mt-3 mt-lg-0">
+        {{ menus.cta_btn() }}
+      </div>
+    </div>
+
+    <div class="justify-content-end d-none d-lg-block">
+      {{ menus.cta_btn() }}
+    </div>
+  </div>
+</nav>
+
+{% macro build_menu(items, attributes, menu_level, modifier, link_modifier) %}
+  {% import _self as menus %}
+  {% if items %}
+    {% if menu_level == 0 %}
+    <ul class="navbar-nav mr-auto gap-2 gap-lg-7">
+    {% else %}
+    <ul class="dropdown-menu">
+    {% endif %}
+    {% for item in items %}
+      {{ menus.add_link(item, attributes, menu_level, modifier, link_modifier) }}
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}
+
+{% macro add_link(item, attributes, menu_level, modifier, link_modifier) %}
+  {% import _self as menus %}
+  {%
+    set link_class = [
+      menu_level == 0 ? 'nav-item',
+      menu_level == 0 ? 'nav-link ' ~ (link_modifier ? link_modifier : ''),
+      item.in_active_trail ? 'active',
+      menu_level == 0 and (item.is_expanded or item.is_collapsed) ? 'dropdown-toggle',
+      menu_level > 0 ? 'dropdown-item',
+    ]
+  %}
+  <li class="nav-item {{ item.is_expanded ? 'dropdown' }}">
+    {% if menu_level == 0 and item.below %}
+      <a href="{{ item.url }}" class="{{ link_class|join(' ') }}" role="button" data-bs-toggle="dropdown" aria-expanded="false" title="{{ 'Expand menu'|t }} {{ item.title }}">{{ item.title }}</a>
+      {{ menus.build_menu(item.below, attributes, menu_level + 1) }}
+    {% else %}
+      <a href="{{ item.url }}" class="{{ link_class|join(' ') }}">{{ item.title }}</a>
+    {% endif %}
+  </li>
+{% endmacro %}
+
+{% macro cta_btn() %}
+  {%
+    include '@<%= themeNameMachine %>/button/button.twig' with {
+      "button": {
+        "text": 'Contact Us',
+        "url": "/contact-us",
+        "icon": 'arrow_right_alt',
+        "modifier": "btn-primary"
+      }
+    } only
+  %}
+{% endmacro %}

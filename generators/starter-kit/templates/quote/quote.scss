@@ -1,65 +1,38 @@
 // Import site utilities.
-@import '../../global/utils/init';
+@import '../../global/bootstrap-init';
 
-.quote {
-  text-align: center;
-  margin-bottom: 1.875rem;
-}
+.blockquote {
 
-.quote__text {
-  font-size: 1.375rem;
-  line-height: 1.25;
-  margin-bottom: 1.875rem;
-  font-style: italic;
+  .open-quote {
+    position: relative;
+    left: -15px;
+  }
 
-  @include breakpoint($bp-xsm) {
-    font-size: 1.75rem;
+  .closed-quote {
+    position: relative;
+    left: 15px;
   }
 }
 
-.quote__cite {
-  font-size: 0.875rem;
-  line-height: 1.375;
+.quote-logo {
 
-  @include breakpoint($bp-xsm) {
-    font-size: 1rem;
-  }
-}
-
-.quote__cite-media {
-  
   img {
-    border-radius: 50%;
-    margin: auto;
+    max-width: 110px;
   }
 }
 
-.quote--left {
+.quote-image {
+  max-width: 120px;
+}
+
+.quote-text {
   text-align: left;
+  margin-left: 12px;
+}
 
-  .quote__text {
-    text-align: center;
+@include media-breakpoint-up(md) {
 
-    @include breakpoint($bp-sm) {
-      text-align: left;
-    }
-  }
-
-  .quote__cite {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-
-    @include breakpoint($bp-sm) {
-      flex-direction: row;
-    }
-  }
-
-  .quote__cite-media {
-    margin: 0 0 1rem;
-
-    @include breakpoint($bp-sm) {
-      margin: 0 1.375rem 0 0;
-    }
+  .quote-text {
+    margin-top: 3px;
   }
 }

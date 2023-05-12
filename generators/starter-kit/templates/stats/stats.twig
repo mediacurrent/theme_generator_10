@@ -1,0 +1,52 @@
+{{ attach_library('<%= themeNameMachine %>/stats') }}
+
+<div class="pt-8 pt-lg-16 pb-6 pb-lg-8 {{ modifier }}">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xxl-6">
+        {% if eyebrow %}
+          <div class="text-uppercase mb-2 pt-1">
+            {% include '@<%= themeNameMachine %>/badge/badge.twig' with {
+                tag: eyebrow,
+                modifier: 'text-bg-secondary'
+              } only %}
+          </div>
+        {% endif %}
+
+        {%
+          include '@<%= themeNameMachine %>/heading/heading.twig' with {
+            "heading": {
+              title: title,
+              heading_level: '2',
+              modifier: 'mb-2 ' ~ heading_modifier
+            }
+          } only
+        %}
+        <div class="mb-5">
+          {% if summary %}
+            {{ summary }}
+          {% endif %}
+        </div>
+
+        <div class="mb-6 d-flex justify-content-center justify-content-xxl-start">
+          {{ image }}
+        </div>
+      </div>
+
+      <div class="col-xxl-6 d-flex align-content-start flex-wrap">
+        {% block stats %}
+          {% if stats %}
+            {% for item in stats %}
+              {%
+                include '@<%= themeNameMachine %>/stats/stats.item.twig' with {
+                  item: item,
+                  heading_modifier: heading_modifier
+                } only
+              %}
+            {% endfor %}
+          {% endif %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+</div>

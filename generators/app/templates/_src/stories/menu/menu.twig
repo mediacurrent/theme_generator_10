@@ -1,0 +1,11 @@
+<div class="{{ modifier }}">
+  <ul class="list-unstyled">
+    {% for item in items %}
+      <li class="{{ item_modifier }}">
+        <a href="{{ item.url }}" class="text-decoration-none {{ item.modifier }}">
+          {{ item.title }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

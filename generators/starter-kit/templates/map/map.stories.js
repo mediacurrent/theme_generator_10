@@ -2,7 +2,7 @@ import "./map.scss";
 import MapTemplate from "./map.twig";
 
 export default {
-  title: "General/Map",
+  title: "Editorial/Map",
   argTypes: {
     map: {
       description: "Define the map object content",
@@ -22,7 +22,8 @@ Map.args = {
     "address": "<p>1234567 Address Street<br />Cityname, ST 12345</p>",
     "link": {
       "url": "http://google.com",
-      "text": "Optional link"
+      "text": "Optional link",
+      "modifier": "btn-primary"
     },
     "eyebrow": {
       "text": "Optional subtitle",

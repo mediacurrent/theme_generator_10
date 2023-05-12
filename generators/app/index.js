@@ -39,22 +39,6 @@ module.exports = class extends Generator {
         }
       },
       {
-        type: 'list',
-        name: 'whichBaseTheme',
-        // eslint-disable-next-line max-len
-        message: 'Which base theme would you like to use? If you don\'t want to use a base theme pick "stable" as that\'s what\'s used by Drupal if you don\'t specify a base.',
-        choices: [
-          {
-            value: 'classy',
-            name: 'Use Classy as a base theme'
-          },
-          {
-            value: 'stable',
-            name: 'Use Stable as a base theme'
-          }
-        ]
-      },
-      {
         name: 'ignoreDist',
         type: 'confirm',
         // eslint-disable-next-line max-len
@@ -66,9 +50,6 @@ module.exports = class extends Generator {
     return this.prompt(prompts).then(function (props) {
       // Should we ignore ./dist files or not?
       this.ignoreDist = props.ignoreDist;
-
-      // Add the base theme to the object.
-      this.baseTheme = props.whichBaseTheme;
 
       // Create a underscored version of the theme name.
       this.cleanThemeName = _.snakeCase(props.themeName);
@@ -241,7 +222,6 @@ module.exports = class extends Generator {
         themeName: this.props.themeName,
         themeDesc: this.props.themeDesc,
         themeNameMachine: this.themeNameMachine,
-        baseTheme: this.baseTheme,
         pkg: this.pkg
       }
     );

@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Theme override to display a block.
+ *
+ * @see template_preprocess_block()
+ */
+#}
+{%
+  set classes = [
+    'block',
+    'p-2 mb-5 mb-md-10',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {% block content %}
+    {% include '@<%= themeNameMachine %>/newsletter-form/newsletter-form.twig' with {
+      "modifier": "shadow rounded-4 bg-dark text-light p-5 container-fluid",
+    } only %}
+  {% endblock %}
+</div>

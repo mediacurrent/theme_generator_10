@@ -1,0 +1,28 @@
+{% if button_text %}
+  <!-- Button trigger modal -->
+  <button type="button" class="btn {{ modifier }}" data-bs-toggle="modal" data-bs-target="#{{ id }}">
+    {{ button_text }}
+  </button>
+{% endif %}
+
+<!-- Modal -->
+<div class="modal fade" id="{{ id }}" tabindex="-1" aria-labelledby="{{ id }}Label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="{{ id }}Label">{{ title }}</h1>
+      </div>
+      <div class="modal-body">
+        {{ body }}
+      </div>
+      <div class="modal-footer">
+        {% if close_text %}
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ close_text }}</button>
+        {% endif %}
+        {% if save_text %}
+          <button type="button" class="btn btn-primary">{{ save_text }}</button>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+{{ attach_library('<%= themeNameMachine %>/carousel-multi') }}
+
+<div class="d-flex justify-content-between">
+  {% if title %}
+    <div class="">
+      {%
+        include '@<%= themeNameMachine %>/heading/heading.twig' with {
+          "heading": {
+            "title": title,
+            "heading_level": "2",
+            "modifier": "mb-8",
+          },
+        } only
+      %}
+    </div>
+  {% endif %}
+
+  {% if link.url %}
+    <div class="mt-1">
+      <a href="{{ link.url }}">{{ link.text }}</a>
+    </div>
+  {% endif %}
+</div>
+
+<div id="carousel{{ id }}" class="carousel-multi d-flex flex-nowrap row {{ modifier }}">
+  {% block carousel_items %}
+    {%
+      include '@<%= themeNameMachine %>/carousel-multi/carousel-multi.item.twig' with {
+        items: items
+      } only
+    %}
+  {% endblock %}
+</div>
+
+<div class="carousel-nav d-flex justify-content-end mt-8">
+  <a class="carousel-prev" href="#"><span data-target="#carousel{{ id }}" class="carousel-control-prev-icon" aria-hidden="true"></span></a>
+  <a class="carousel-next mx-3" href="#"><span data-target="#carousel{{ id }}" class="carousel-control-next-icon" aria-hidden="true"></span></a>
+</div>

@@ -1,0 +1,7 @@
+{{ attach_library('<%= themeNameMachine %>/cta') }}
+
+<div class="text-center">
+  {% include '@<%= themeNameMachine %>/button/button.twig' with {
+    "button": button,
+  } only %}
+</div>

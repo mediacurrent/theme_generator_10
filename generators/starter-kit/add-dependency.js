@@ -2,7 +2,7 @@
 module.exports = function addDependency (component, themeNameMachine) {
   let libraries = {};
 
-  // Accordion uses an es6.js library.
+  // Accordion.
   if (component === 'accordion') {
     libraries = {
       [component]: {
@@ -10,16 +10,15 @@ module.exports = function addDependency (component, themeNameMachine) {
           component: {
             [`dist/css/${component}.css`]: {}
           }
-        },
-        js: {
-          [`dist/js/${component}.es6.js`]: {}
         }
-      }
+      },
+      dependencies: [
+        `${themeNameMachine}/bootstrap-js`
+      ]
     };
   }
-  // If this is the carousel component, it needs SlickJS added
-  // as a dependency.
-  if (component === 'carousel') {
+  // Carousel (multi).
+  if (component === 'carousel-multi') {
     libraries = {
       [component]: {
         css: {
@@ -31,13 +30,13 @@ module.exports = function addDependency (component, themeNameMachine) {
           [`dist/js/${component}.es6.js`]: {}
         },
         dependencies: [
-          `${themeNameMachine}/slick`
+          `core/drupal`
         ]
       }
     };
   }
-  // Card List depends on Card.
-  if (component === 'card-list') {
+   // Gallery Carousel.
+   if (component === 'gallery-lightbox') {
     libraries = {
       [component]: {
         css: {
@@ -46,70 +45,13 @@ module.exports = function addDependency (component, themeNameMachine) {
           }
         },
         dependencies: [
-          `${themeNameMachine}/card`,
+          `${themeNameMachine}/bootstrap-js`
         ]
       }
     };
   }
-   // Gallery Carousel depends on Slick.
-   if (component === 'gallery-carousel') {
-    libraries = {
-      [component]: {
-        css: {
-          component: {
-            [`dist/css/${component}.css`]: {}
-          }
-        },
-        js: {
-          [`dist/js/${component}.es6.js`]: {}
-        },
-        dependencies: [
-          `${themeNameMachine}/slick`
-        ]
-      }
-    };
-  }
-  // Gallery Lightbox depends on Colorbox.
-  if (component === 'gallery-lightbox') {
-    libraries = {
-      [component]: {
-        css: {
-          component: {
-            [`dist/css/${component}.css`]: {}
-          }
-        },
-        js: {
-          [`dist/js/${component}.es6.js`]: {}
-        },
-        dependencies: [
-          `${themeNameMachine}/colorbox`
-        ]
-      }
-    };
-  }
-  // Main-menu has several JS dependencies.
-  if (component === 'main-menu') {
-    libraries = {
-      [component]: {
-        css: {
-          component: {
-            [`dist/css/${component}.css`]: {}
-          }
-        },
-        js: {
-          [`dist/js/${component}.es6.js`]: {}
-        },
-        dependencies: [
-          'core/jquery',
-          'core/jquery.once',
-          'core/drupal',
-          'core/drupalSettings'
-        ]
-      }
-    };
-  }
-  // Site-header depends on L-Flex.
-  if (component === 'site-header') {
+  // Hero.
+  if (component === 'hero') {
     libraries = {
       [component]: {
         css: {
@@ -118,7 +60,22 @@ module.exports = function addDependency (component, themeNameMachine) {
           }
         },
         dependencies: [
-          `${themeNameMachine}/l-flex`
+          `${themeNameMachine}/card`
+        ]
+      }
+    };
+  }
+  // Map.
+  if (component === 'map') {
+    libraries = {
+      [component]: {
+        css: {
+          component: {
+            [`dist/css/${component}.css`]: {}
+          }
+        },
+        dependencies: [
+          `${themeNameMachine}/card`
         ]
       }
     };

@@ -7,7 +7,7 @@ The Theme Generator is a scafolding tool built by your friends at [Mediacurrent]
 - [Creating a new Drupal Theme](#creating-a-new-drupal-theme)
   - [Setup NodeJS & NPM](#setup-nodejs--npm)
   - [Create the theme](#create-the-theme)
-- [Note about Drupal 9](#note-about-drupal-9)
+- [Note about Drupal 10](#note-about-drupal-10)
 - [About the New Theme](#about-the-new-theme)
   - [Drupal Module Dependencies](#drupal-module-dependencies)
   - [Support](#support)
@@ -62,7 +62,7 @@ While not a requirement we like to use [NVM](https://github.com/creationix/nvm) 
 1. Run the generator (**Do not change this command**):
 
     ```bash
-    npm create yo mc-d9-theme
+    npm create yo mc-d10-theme
     ```
 
     - You should be taken through a series of questions that allow you to pick the best options for your theme.
@@ -73,9 +73,9 @@ More info if you're interested in how this stuff works:
 
 `npm create` is an alias of `npm init` and uses [npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) under the hood. Find out more about [npm init](https://docs.npmjs.com/cli/init.html).
 
-## Note about Drupal 9
+## Note about Drupal 10
 
-If you are building a Drupal 9 theme, make the following updates after your theme has been created:
+If you are building a Drupal 10 theme, make the following updates after your theme has been created:
 
 - Remove `node_modules`
 
@@ -101,53 +101,32 @@ The following is supported by your new theme.
 
 ### Starter Kit
 
-The theme generator allows you to (optionally) add example components / templates.
+The theme generator allows you to (optionally) add editorial components.
 
-- Element - Body Text
-- Element - Button
-- Element - Eyebrow
-- Element - Heading
-- Layout - L-Flex
-- Layout - Page Layout (dependencies: Breadcrumb, L-Flex, Main Menu, Site Branding, Site Footer, Utility Nav)
-- Layout - Site Branding
-- Layout - Site Footer (dependencies: Body Text, Menu, Site Branding, Social Menu, Utility Nav)
-- Layout - Site Header (dependencies: Breadcrumb, L-Flex, Main Menu, Site Branding, Utility Nav)
-- Layout - Social Menu (dependencies: Icons)
-- Layout - Utility Nav / Account (dependencies: Menu)
-- Drupal - Breadcrumb
-- Drupal - Font Awesome
-- Drupal - Menu
-- Drupal - Main Menu
-- Drupal - Messages
-- Drupal - Page Title (dependencies: Heading)
-- Drupal - Pager (dependencies: Icons)
-- Drupal - Search API Results
-- Drupal - Search Box (dependencies: Icons)
-- Drupal - Tabs
-- Node - Rain Templates
-- Block - Accordion (dependencies: Heading, Icons)
-- Block - Breaker (dependencies: Card)
-- Block - Card (dependencies: Body Text, Heading)
-- Block - Card List (dependencies: Button, Card)
-- Block - Carousel / Slider (dependencies: Heading, Hero)
-- Block - Embed (dependencies: Heading)
-- Block - Form (dependencies: Heading)
-- Block - Gallery Carousel (dependencies: Body Text, Heading)
-- Block - Gallery + Lightbox (dependencies: Body Text, Heading, Icons)
-- Block - Hero (dependencies: Body Text, Button, Eyebrow, Heading, Media)
-- Block - Latest News (dependencies: Card, Heading)
-- Block - Map (dependencies: Eyebrow)
-- Block - Media (dependencies: Heading, Media)
-- Block - Quote
-- Block - Teaser (dependencies: Card)
-- Block - Views (dependencies: Button, Heading)
+- Accordion Group
+- Card List
+- Carousel
+- Carousel Multi
+- CTA
+- Embed
+- Form
+- Gallery
+- Hero
+- Map
+- Newsletter Form
+- Promo Banner
+- Quote
+- Stats
+- 50-50 Teaser
+- Text Block
+- Video Block
 
 These can include both component and Drupal templates that are added to the appropriate place during theme generation. Your theme.libraries.yml is also updated to include the relevant libraries.
 
 This can also be run within a pre-existing theme using:
 
 ```bash
-npx yo mc-d9-theme:starter-kit
+npx yo mc-d10-theme:starter-kit
 ```
 
 ## Create new Components
@@ -239,19 +218,19 @@ Would you like to contribute? Want to make a few changes or fix a bug? COME ON O
 ### Clone down this repo
 
 ```bash
-git clone git@github.com:mediacurrent/theme_generator_9.git
+git clone git@github.com:mediacurrent/theme_generator_10.git
 ```
 
 ```bash
-cd theme_generator_9
+cd theme_generator_10
 ```
 
-Remove `generator-mc-d9-theme` if you have previously installed it:
+Remove `generator-mc-d10-theme` if you have previously installed it:
 
 _Tip: use `npm ls -g -depth=0` to see what global node modules are installed._
 
 ```bash
-npm uninstall generator-mc-d9-theme -g
+npm uninstall generator-mc-d10-theme -g
 ```
 
 Use the node version of the generator
@@ -274,7 +253,7 @@ npm install
 npm link
 ```
 
-Now whenever you run `yo mc-d9-theme` it'll use your locally cloned mc-d9-theme generator. Any updates done to the generator can be tested in real time.
+Now whenever you run `yo mc-d10-theme` it'll use your locally cloned mc-d10-theme generator. Any updates done to the generator can be tested in real time.
 
 Break off a feature branch dive right in. After you've got something you'd like to add, push back to the repo and pull request against develop.
 
