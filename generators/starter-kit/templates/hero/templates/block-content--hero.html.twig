@@ -27,15 +27,14 @@
   {% set modifier = 'bg-dark text-white' %}
 {% endif %}
 
-{% set image_view_mode = 'default' %}
+{% set image_view_mode = 'hero' %}
 {% if layout == 'image_left' or layout == 'image_right' %}
   {% set image_view_mode = 'hero_square' %}
   {% set classes = classes|merge(['mb-6 mb-lg-8']) %}
 {% elseif layout == 'image_top' or layout == 'image_bottom' %}
-  {% set image_view_mode = 'hero' %}
   {% set classes = classes|merge(['mb-6 mb-lg-8']) %}
 {% else %}
-  {% set classes = classes|merge(['mb-8 mb-lg-16']) %}
+  {% set classes = classes|merge(['mb-6 mb-lg-12']) %}
 {% endif %}
 
 <div{{ attributes.addClass(classes) }}>
