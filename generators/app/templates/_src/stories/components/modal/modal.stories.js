@@ -1,3 +1,4 @@
+import "./modal.scss";
 import ModalTemplate from "./modal.twig";
 
 export default {

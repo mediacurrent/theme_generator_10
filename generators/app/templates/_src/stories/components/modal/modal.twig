@@ -1,3 +1,5 @@
+{{ attach_library('<%= themeNameMachine %/modal') }}
+
 {% if button_text %}
   <!-- Button trigger modal -->
   <button type="button" class="btn {{ modifier }}" data-bs-toggle="modal" data-bs-target="#{{ id }}">
@@ -5,22 +7,22 @@
   </button>
 {% endif %}
 
-<!-- Modal -->
-<div class="modal fade" id="{{ id }}" tabindex="-1" aria-labelledby="{{ id }}Label" aria-hidden="true">
+<div class="modal modal-lg fade" id="{{ id }}" tabindex="-1" aria-labelledby="{{ id }}Label" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title" id="{{ id }}Label">{{ title }}</h1>
+    <div class="modal-content p-2">
+      <div class="modal-header pb-0 border-0">
+        <h2 class="modal-title fs-4" id="{{ id }}Label">{{ title }}</h2>
+        <button type="button" class="btn-close p-0" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        {{ body }}
+      <div class="modal-body pb-0 fs-6">
+        {{ body|raw }}
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer border-0">
         {% if close_text %}
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ close_text }}</button>
+          <button type="button" class="btn btn-outline-primary me-2" data-bs-dismiss="modal">{{ close_text }}</button>
         {% endif %}
         {% if save_text %}
-          <button type="button" class="btn btn-primary">{{ save_text }}</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">{{ save_text }}</button>
         {% endif %}
       </div>
     </div>

@@ -22,18 +22,21 @@
   }
 
   @include media-breakpoint-up(md) {
+
     img {
       width: 70%;
     }
   }
 
   @include media-breakpoint-up(xl) {
+
     img {
       width: 50%;
     }
   }
 
   @include media-breakpoint-up(xxl) {
+
     img {
       width: 100%;
     }

@@ -42,7 +42,7 @@ card:
 fonts:
   css:
     component:
-      //fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,500;0,550;0,600;0,400;1,500;1,600&display=swap: {}
+      //fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap: {}
 
 gin:
   css:
@@ -70,6 +70,11 @@ main-menu:
       dist/css/main-menu.css: {}
   dependencies:
     - "<%= themeNameMachine %>/bootstrap-js"
+
+modal:
+  css:
+    component:
+      dist/css/modal.css: {}
 
 pager:
   css:
