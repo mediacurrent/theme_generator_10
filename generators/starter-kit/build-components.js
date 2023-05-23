@@ -17,8 +17,7 @@ module.exports = async function buildComponents({
     // Exclude the templates folder, it needs to go in a different directory.
     app.fs.copyTpl(
       [
-        app.templatePath(`${component}`),
-        `!${app.templatePath(`${component}`)}/templates`
+        app.templatePath(`${component}`)
       ],
       app.destinationPath(`src/stories/components/${component}`),
       {
