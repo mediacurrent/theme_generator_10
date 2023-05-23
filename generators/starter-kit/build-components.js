@@ -1,7 +1,3 @@
-// Scaffolds out the component folders and returns the generated manifest
-// used to populate the Drupal libraries file and copy over any
-// Drupal templates.
-
 const fs = require('fs');
 // Experimental, could switch to normal FS I suppose.
 const fsPromises = fs.promises;
@@ -26,7 +22,8 @@ module.exports = async function buildComponents({
       ],
       app.destinationPath(`src/stories/components/${component}`),
       {
-        themeNameMachine: app.themeNameMachine
+        themeNameMachine: app.themeNameMachine,
+        overwrite: false
       }
     );
 
