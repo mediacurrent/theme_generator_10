@@ -172,8 +172,8 @@ module.exports = class extends Generator {
       this.destinationPath('src/templates')
     );
     this.fs.copy(
-      this.templatePath('_src/favicon.ico'),
-      this.destinationPath('src/favicon.ico')
+      this.templatePath('favicon.ico'),
+      this.destinationPath('favicon.ico')
     );
 
     // Build out the compiled folders.
