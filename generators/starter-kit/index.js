@@ -49,12 +49,8 @@ module.exports = class extends Generator {
             name: 'Card List'
           },
           {
-            value: 'carousel',
-            name: 'Carousel'
-          },
-          {
-            value: 'carousel',
-            name: 'Carousel Multi'
+            value: 'carousel-multi',
+            name: 'Carousel (Multi)'
           },
           {
             value: 'cta',
