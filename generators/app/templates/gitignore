@@ -22,7 +22,4 @@ dist/images/*
 dist/js/*
 !dist/js/.gitkeep
 
-# Ignore Patternlab files that change every time.
-patternlab
-dependencyGraph.json
 <% } %>

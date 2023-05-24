@@ -171,9 +171,104 @@ module.exports = class extends Generator {
       this.templatePath('_src/templates'),
       this.destinationPath('src/templates')
     );
+
+    const templates = [
+      'block',
+      'content',
+      'field',
+      'form',
+      'layout',
+      'layouts',
+      'media',
+      'misc',
+      'navigation',
+      'user',
+      'views'
+    ];
+
+    templates.map(async (template) => {
+
+      // Copy the selected component into the theme.
+      // Exclude the templates folder, it needs to go in a different directory.
+      this.fs.copyTpl(
+        [
+          this.templatePath(`_src/templates/${template}`)
+        ],
+        this.destinationPath(`src/templates/${template}`),
+        {
+          themeNameMachine: this.themeNameMachine,
+          overwrite: false
+        }
+      );
+    });
+
+    // Copy over the selected components.
+    const components = [
+      'alerts',
+      'badge',
+      'breadcrumb',
+      'button',
+      'card',
+      'carousel',
+      'checkbox',
+      'color',
+      'divider',
+      'dropdown',
+      'field-label',
+      'gin',
+      'header',
+      'heading',
+      'image',
+      'inline-menu',
+      'inline-navigation',
+      'link',
+      'logo',
+      'main-menu',
+      'menu',
+      'modal',
+      'pager',
+      'popover',
+      'radio',
+      'rich-text',
+      'search-box',
+      'search-results',
+      'shadow',
+      'sidebar',
+      'site-footer',
+      'social-icons',
+      'spacing',
+      'spinner',
+      'toggle',
+      'tooltip',
+      'typography',
+      'utility-nav',
+      'video'
+    ];
+
+    components.map(async (component) => {
+
+      // Copy the selected component into the theme.
+      // Exclude the templates folder, it needs to go in a different directory.
+      this.fs.copyTpl(
+        [
+          this.templatePath(`_src/stories/components/${component}`)
+        ],
+        this.destinationPath(`src/stories/components/${component}`),
+        {
+          themeNameMachine: this.themeNameMachine,
+          overwrite: false
+        }
+      );
+    });
+
     this.fs.copy(
       this.templatePath('favicon.ico'),
       this.destinationPath('favicon.ico')
+    );
+
+    this.fs.copy(
+      this.templatePath('logo.svg'),
+      this.destinationPath('logo.svg')
     );
 
     // Build out the compiled folders.

@@ -1,4 +1,4 @@
-import "../src/stories/global/global.scss";
+import "../src/stories/global/bootstrap.scss";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
