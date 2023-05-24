@@ -10,11 +10,11 @@ module.exports = function addDependency (component, themeNameMachine) {
           component: {
             [`dist/css/${component}.css`]: {}
           }
-        }
+        },
+        dependencies: [
+          `${themeNameMachine}/bootstrap-js`
+        ]
       },
-      dependencies: [
-        `${themeNameMachine}/bootstrap-js`
-      ]
     };
   }
   // Carousel (multi).
@@ -35,8 +35,8 @@ module.exports = function addDependency (component, themeNameMachine) {
       }
     };
   }
-   // Gallery Carousel.
-   if (component === 'gallery-lightbox') {
+  // Gallery Carousel.
+  if (component === 'gallery-lightbox') {
     libraries = {
       [component]: {
         css: {

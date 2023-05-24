@@ -591,7 +591,7 @@ $font-size-root:              null !default;
 
 // Ignite: Override font size.
 $font-size-base:              20px !default; // Assumes the browser default, typically `16px`
-$font-size-sm:                $font-size-base * .875 !default;
+$font-size-sm:                $font-size-base * .8 !default;
 $font-size-lg:                $font-size-base * 1.25 !default;
 
 // Ignite: Override font weight.
