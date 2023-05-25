@@ -47,7 +47,7 @@
       "heading": {
         "title": content.field_heading|field_value,
         "level": "2",
-        "modifier": "display-3 mb-2 fw-bold " ~ (layout == 'overlay' ? 'text-white' : 'text-dark')
+        "modifier": "display-3 mb-2 " ~ (layout == 'overlay' ? 'text-white' : 'text-dark')
       },
       "body": {
         "body_text": content.field_summary|render|trim is not empty ? content.field_summary,

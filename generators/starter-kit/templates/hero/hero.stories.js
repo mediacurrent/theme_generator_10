@@ -15,7 +15,7 @@ Hero.args = {
   "heading": {
     "title": "Shortcut your design and development",
     "level": "2",
-    "modifier": "display-3 fw-bold"
+    "modifier": "display-3"
   },
   "body": {
     "body_text": "<p>Quickly design and customize responsive mobile-first sites with Bootstrap.</p>",
@@ -38,7 +38,7 @@ HeroImageTop.args = {
   "heading": {
     "title": "<strong>Shortcut</strong> your <strong>design</strong> and <strong>development</strong> with our website starter kit",
     "level": "2",
-    "modifier": "display-3 fw-bold"
+    "modifier": "display-3"
   },
   "body": {
     "body_text": "<p>Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>",
@@ -61,7 +61,7 @@ HeroImageBottom.args = {
   "heading": {
     "title": "<strong>Shortcut</strong> your <strong>design</strong> and <strong>development</strong> with our website starter kit",
     "level": "2",
-    "modifier": "display-3 fw-bold text-dark mb-4"
+    "modifier": "display-3 text-dark mb-4"
   },
   "body": { },
   "button": {
@@ -81,7 +81,7 @@ HeroImageRight.args = {
   "heading": {
     "title": "We got your <strong>website</strong> and <strong>design system</strong> project covered",
     "level": "2",
-    "modifier": "display-3 fw-bold text-dark"
+    "modifier": "display-3 text-dark"
   },
   "body": {
     "body_text": "<p>Lorem ipsum dolor sit amet consectetur. Congue vel sagittis eu ullamcorper vel. Et et dui est ante tempor egestas pellentesque odio. Ornare erat lacus commodo porttitor ut enim. Ultricies mauris blandit in fermentum fringilla mollis risus ut. Nam eget eu suspendisse ut fermentum nascetur pretium lectus. Odio amet amet nam viverra hendrerit diam et. Nibh nunc in senectus odio tempor vitae id. Sit ut sit porta nisl enim.</p>",
@@ -104,7 +104,7 @@ HeroImageLeft.args = {
   "heading": {
     "title": "We got your <strong>website</strong> and <strong>design system</strong> project covered",
     "level": "2",
-    "modifier": "display-3 fw-bold text-dark"
+    "modifier": "display-3 text-dark"
   },
   "body": {
     "body_text": "<p>Lorem ipsum dolor sit amet consectetur. Congue vel sagittis eu ullamcorper vel. Et et dui est ante tempor egestas pellentesque odio. Ornare erat lacus commodo porttitor ut enim. Ultricies mauris blandit in fermentum fringilla mollis risus ut. Nam eget eu suspendisse ut fermentum nascetur pretium lectus. Odio amet amet nam viverra hendrerit diam et. Nibh nunc in senectus odio tempor vitae id. Sit ut sit porta nisl enim.</p>",
