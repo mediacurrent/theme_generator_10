@@ -41,8 +41,13 @@ Modal.args = {
   "id": "exampleModal",
   "title": "Modal title",
   "body": "<p>Modal body text goes here.</p>",
-  "close_text": "Close",
-  "save_text": "Save changes",
-  "button_text": "Launch demo modal",
+  "button1": {
+    "text" : "Close",
+  },
+  "button2": {
+    "text" : "Save Changes",
+    "url" : "http://drupal.org/"
+  },
+  "trigger_button_text": "Launch demo modal",
   "modifier": "btn-primary",
 };

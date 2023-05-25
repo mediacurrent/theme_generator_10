@@ -1,9 +1,9 @@
 {{ attach_library('<%= themeNameMachine %>/modal') }}
 
-{% if button_text %}
+{% if trigger_button_text %}
   <!-- Button trigger modal -->
   <button type="button" class="btn {{ modifier }}" data-bs-toggle="modal" data-bs-target="#{{ id }}">
-    {{ button_text }}
+    {{ trigger_button_text }}
   </button>
 {% endif %}
 
@@ -18,11 +18,11 @@
         {{ body|raw }}
       </div>
       <div class="modal-footer border-0">
-        {% if close_text %}
-          <button type="button" class="btn btn-outline-primary me-2" data-bs-dismiss="modal">{{ close_text }}</button>
+        {% if button1.text %}
+          <a type="button" class="btn btn-outline-primary me-2" href="{{ button1.url }}" {{ button1.url is empty ? 'data-bs-dismiss="modal"' : '' }}>{{ button1.text }}</a>
         {% endif %}
-        {% if save_text %}
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">{{ save_text }}</button>
+        {% if button2.text %}
+          <a type="button" class="btn btn-primary" href="{{ button2.url }}" {{ button2.url is empty ? 'data-bs-dismiss="modal"' : '' }}>{{ button2.text }}</a>
         {% endif %}
       </div>
     </div>
