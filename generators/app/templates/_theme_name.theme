@@ -142,7 +142,7 @@ function <%= themeNameMachine %>_preprocess_block(array &$variables) {
   // Add logo footer to footer.
   if (isset($variables['elements']['#id']) && $variables['elements']['#id'] == 'footer') {
     $theme_path = \Drupal::service('extension.list.theme')->getPath('<%= themeNameMachine %>');
-    $variables['site_logo'] = '/' . $theme_path . theme_get_setting('logo_footer');
+    $variables['site_logo'] = '/' . $theme_path . '/static/images/logo-footer.svg';
   }
 }
 
