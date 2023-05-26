@@ -4,7 +4,13 @@
   {{- attributes ? ' ' ~ attributes.class -}}">
   {% block card_media %}
     {% if card.media %}
+      {% if card.media_link %}
+        <a href="{{ card.media_link }}">
+      {% endif %}
       {{ card.media }}
+      {% if card.media_link %}
+        </a>
+      {% endif %}
     {% endif %}
   {% endblock %}
 

@@ -13,6 +13,7 @@
     include '@<%= themeNameMachine %>/card/card.twig' with {
       "card": {
         "media": content.field_media,
+        "media_link": content.field_link[0]['#url'],
         "heading": {
           "title": content.field_title|field_value,
           "heading_level": "3",
