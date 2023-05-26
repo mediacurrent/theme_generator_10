@@ -19,10 +19,10 @@
       </div>
       <div class="modal-footer border-0">
         {% if button1.text %}
-          <a type="button" class="btn btn-outline-primary me-2" href="{{ button1.url }}" {{ button1.url is empty ? 'data-bs-dismiss="modal"' : '' }}>{{ button1.text }}</a>
+          <a type="button" class="btn btn-outline-primary me-2" href="{{ button1.url ?? '#' }}" {{ button1.url is empty ? 'data-bs-dismiss="modal"' : '' }}>{{ button1.text }}</a>
         {% endif %}
         {% if button2.text %}
-          <a type="button" class="btn btn-primary" href="{{ button2.url }}" {{ button2.url is empty ? 'data-bs-dismiss="modal"' : '' }}>{{ button2.text }}</a>
+          <a type="button" class="btn btn-primary" href="{{ button2.url ?? '#' }}" {{ button2.url is empty ? 'data-bs-dismiss="modal"' : '' }}>{{ button2.text }}</a>
         {% endif %}
       </div>
     </div>
