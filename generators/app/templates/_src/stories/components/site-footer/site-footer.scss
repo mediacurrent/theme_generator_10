@@ -5,7 +5,7 @@
 
   .logo {
     display: block;
-    width: 82px;
+    max-width: 300px;
     margin-bottom: 2rem;
 
     @include media-breakpoint-up(lg) {

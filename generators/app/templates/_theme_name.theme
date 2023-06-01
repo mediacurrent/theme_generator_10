@@ -143,6 +143,9 @@ function <%= themeNameMachine %>_preprocess_block(array &$variables) {
   if (isset($variables['elements']['#id']) && $variables['elements']['#id'] == 'footer') {
     $theme_path = \Drupal::service('extension.list.theme')->getPath('<%= themeNameMachine %>');
     $variables['site_logo'] = '/' . $theme_path . '/static/images/logo-footer.svg';
+
+    // Show social icons if enabled.
+    $variables['show_social_icons'] = theme_get_setting('show_social');
   }
 }
 
