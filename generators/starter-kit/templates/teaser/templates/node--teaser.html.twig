@@ -4,15 +4,26 @@
  * Theme override for the "teaser" view mode.
  */
 #}
-
 {%
-  include '@<%= themeNameMachine %>/teaser/teaser.twig' with {
-    title: label,
-    eyebrow: content.field_eyebrow,
-    summary: content.field_summary,
-    link: url,
-    image: content.field_thumbnail,
-    layout: 'left',
-    modifier: 'rounded-4 mb-6 mb-lg-12',
-  } only
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
 %}
+<div{{ attributes.addClass(classes) }}>
+  {%
+    include '@<%= themeNameMachine %>/teaser/teaser.twig' with {
+      title: label,
+      eyebrow: content.field_eyebrow,
+      summary: content.field_summary,
+      link: url,
+      image: content.field_thumbnail,
+      layout: 'left',
+      modifier: 'rounded-4 mb-6 mb-lg-12',
+    } only
+  %}
+</div>
