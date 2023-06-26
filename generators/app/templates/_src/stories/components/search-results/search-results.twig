@@ -1,11 +1,11 @@
 <div class="container-fluid">
   {% for item in items %}
-    <div class="row mb-2">
-      <div>
-        {{ item.link }}
-      </div>
-      <h2><a href="{{ item.link }}" class="text-secondary">{{ item.title }}</a></h2>
-      <div>{{ item.summary }}</div>
-    </div>
+    {% block search_item %}
+      {%
+        include '@<%= themeNameMachine %>/search-results/search-results.item.twig' with {
+          item: item
+        } only
+      %}
+    {% endblock %}
   {% endfor %}
 </div>

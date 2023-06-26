@@ -12,7 +12,11 @@
 
   {{ no_results_found }}
 
-  {{ search_help }}
+  {% if search_help %}
+    <div class="pb-6 pb-lg-12">
+      {{ search_help }}
+    </div>
+  {% endif %}
 
   {{ results }}
 
