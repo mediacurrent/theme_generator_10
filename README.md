@@ -41,11 +41,13 @@ Move into the new directory and install Node:
 cd my_awesome_theme
 ```
 
-```bash
-nvm install
+ ```bash
+nvm install 16 && node -v > .nvmrc
 ```
 
-- This will install the recommended version of NVM for this project.
+- This will install the latest release of NodeJS `v16`.
+
+- It will create `.nvmrc` in the root of your project.
 
 
 ### 3. Generate the theme
