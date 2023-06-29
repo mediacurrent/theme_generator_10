@@ -45,7 +45,7 @@ cd my_awesome_theme
 nvm install
 ```
 
-- This will install the latest release of NodeJS `v16`.
+- This will install the recommended version of NVM for this project.
 
 
 ### 3. Generate the theme
