@@ -25,47 +25,38 @@ While the theme generator can be run anywhere, it's happiest when it's run from 
 
 While not a requirement we like to use [NVM](https://github.com/creationix/nvm) to manage the version of Node per project.
 
-## Creating a new Drupal theme
+### 1. Creating a new Drupal theme
 
-1. Create a new directory.  Example:
+Create a new directory.  Example:
 
-    ```bash
-    themes/custom/my_awesome_theme
-    ```
+```bash
+themes/custom/my_awesome_theme
+```
 
-### Setup NodeJS & NPM
+### 2. Setup NodeJS & NPM
 
-1. Move into the new directory and install Node:
+Move into the new directory and install Node:
 
-    ```bash
-    cd my_awesome_theme
-    ```
+```bash
+cd my_awesome_theme
+```
 
-    ```bash
-    nvm install 14 && node -v > .nvmrc
-    ```
+```bash
+nvm install
+```
 
-    - This will install the latest release of NodeJS `v14`.
+- This will install the latest release of NodeJS `v16`.
 
-    - It will create `.nvmrc` in the root of your project.
 
-1. Theme Generator is compatible with npm v6.
+### 3. Generate the theme
 
-    ```bash
-    npm install -g npm@6.14.12
-    ```
+Run the generator (**Do not change this command**):
 
-    From now on, when working on this theme change into its directory and run `nvm use` and NVM will switch to the specified version for you.
+```bash
+npm create yo mc-d10-theme
+```
 
-### Create the theme
-
-1. Run the generator (**Do not change this command**):
-
-    ```bash
-    npm create yo mc-d10-theme
-    ```
-
-    - You should be taken through a series of questions that allow you to pick the best options for your theme.
+- You should be taken through a series of questions that allow you to pick the best options for your theme.
 
 **IMPORTANT**: Your theme's machine name should always match the directory name you created above.
 
