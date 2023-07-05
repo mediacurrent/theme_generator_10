@@ -35,7 +35,7 @@ themes/custom/my_awesome_theme
 
 ### 2. Setup NodeJS & NPM
 
-1. Move into the new directory and install Node:
+#### 1. Move into the new directory and install Node:
 
 ```bash
 cd my_awesome_theme
@@ -49,17 +49,9 @@ nvm install 16 && node -v > .nvmrc
 
 - It will create `.nvmrc` in the root of your project.
 
-
-2. Install npm dependencies (npm v8 and libnpx)
-
-```bash
-npm install -g npm@8.19.4
-npm install -g libnpx
-```
-
 From now on, when working on this theme change into its directory and run `nvm use` and NVM will switch to the specified version for you.
 
-### 3. Generate the theme
+#### 2. Generate the theme
 
 Run the generator (**Do not change this command**):
 
