@@ -16,6 +16,9 @@ export default {
 };
 
 export const CarouselMulti = CarouselMultiTemplate.bind({});
+CarouselMulti.play = async ({ canvasElement }) => {
+  Drupal.behaviors.carouselMulti.attach(canvasElement);
+};
 
 CarouselMulti.args = {
   "id": "multi",
