@@ -54,7 +54,6 @@ From now on, when working on this theme change into its directory and run `nvm u
 #### 2. Install dependencies
 
 ```bash
-npm install -g npm@8.19.4
 npm install -g libnpx
 ```
 
