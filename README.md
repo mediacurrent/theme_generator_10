@@ -51,12 +51,19 @@ nvm install 16 && node -v > .nvmrc
 
 From now on, when working on this theme change into its directory and run `nvm use` and NVM will switch to the specified version for you.
 
-#### 2. Generate the theme
+#### 2. Install dependencies
+
+```bash
+npm install -g npm@8.19.4
+npm install -g libnpx
+```
+
+#### 3. Generate the theme
 
 Run the generator (**Do not change this command**):
 
 ```bash
-npx yo mc-d10-theme
+npm create yo mc-d10-theme
 ```
 
 - You should be taken through a series of questions that allow you to pick the best options for your theme.
