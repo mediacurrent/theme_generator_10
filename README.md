@@ -50,10 +50,11 @@ nvm install 16 && node -v > .nvmrc
 - It will create `.nvmrc` in the root of your project.
 
 
-2. Theme Generator is compatible with npm v6.
+2. Install npm dependencies (npm v8 and libnpx)
 
 ```bash
 npm install -g npm@8.19.4
+npm install -g libnpx
 ```
 
 From now on, when working on this theme change into its directory and run `nvm use` and NVM will switch to the specified version for you.
@@ -63,7 +64,7 @@ From now on, when working on this theme change into its directory and run `nvm u
 Run the generator (**Do not change this command**):
 
 ```bash
-npm create yo mc-d10-theme
+npx yo mc-d10-theme
 ```
 
 - You should be taken through a series of questions that allow you to pick the best options for your theme.
