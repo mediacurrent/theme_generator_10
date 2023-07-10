@@ -6,6 +6,7 @@
   width: calc(50% - 20px);
   color: var(--bs-secondary);
   padding-bottom: 10px;
+  text-align: center;
 }
 
 .glb-grid-item svg,
@@ -20,6 +21,8 @@
 .glb-layout-builder-browser .glb-claro-details__wrapper {
   padding-top: 20px;
   padding-bottom: 20px;
+  margin-left: inherit !important;
+  margin-right: inherit !important;
 }
 
 // Update help block size.
@@ -44,4 +47,37 @@ body .ui-dialog .ui-dialog-titlebar {
 
 body #layout-builder-modal ul {
   background: $white;
+}
+
+// Override the move block sidebar.
+.layout-builder-components-table__block-label .tabledrag-handle {
+  position: relative;
+  top: 4px;
+
+  .handle {
+    display: none;
+  }
+}
+
+#layout-builder-components-table {
+
+  table {
+    margin: 0 20px;
+  }
+
+  .tabledrag-changed-warning {
+    margin-bottom: 20px;
+  }
+}
+
+// Add border around layout builder blocks.
+body .layout-builder-block {
+  border: 1px dashed $black;
+  margin-bottom: 10px !important;
+}
+
+// Adjust the layout builder links positioning.
+.layout-builder__link--remove,
+.layout-builder__link--configure {
+  top: -27px;
 }
