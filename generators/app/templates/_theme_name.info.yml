@@ -23,6 +23,10 @@ base theme: stable9
 # existing libraries.
 # libraries-extend:
 
+# Disable Gin LB style sheet.
+libraries-override:
+  gin_lb: false
+
 # The "libraries:" section will add a library to _all_ pages.
 libraries:
   - <%= themeNameMachine %>/global
