@@ -10,7 +10,7 @@ export default {
 export const Hero = HeroTemplate.bind({});
 Hero.args = {
   "modifier": "bg-dark text-light",
-  "image": "<img src='https://via.placeholder.com/1024x576.png' class='card-img rounded' alt='test image' />",
+  "image": "<img src='https://via.placeholder.com/800x450.png' class='card-img rounded' alt='test image' />",
   "eyebrow": "Ignite",
   "heading": {
     "title": "Shortcut your design and development",
