@@ -81,3 +81,13 @@ body .layout-builder-block {
 .layout-builder__link--configure {
   top: -27px;
 }
+
+// Make preview images full height.
+#layout-builder-modal .glb-media-library-item__preview img {
+  height: 100%;
+}
+
+// Hide the view mode setting.
+.layout-builder-configure-block .form-item-settings-view-mode {
+  display: none;
+}

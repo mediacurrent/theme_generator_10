@@ -55,6 +55,11 @@ gin:
   css:
     component:
       dist/css/gin.css: {}
+  js:
+      dist/js/gin.es6.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
 
 header:
   css:
