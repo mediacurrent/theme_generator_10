@@ -27,9 +27,7 @@
   {% set modifier = 'bg-dark text-white' %}
 {% endif %}
 
-{% set image_view_mode = 'hero' %}
 {% if layout == 'image_left' or layout == 'image_right' %}
-  {% set image_view_mode = 'hero_square' %}
   {% set classes = classes|merge(['mb-6 mb-lg-8']) %}
 {% elseif layout == 'image_top' or layout == 'image_bottom' %}
   {% set classes = classes|merge(['mb-6 mb-lg-8']) %}
@@ -42,7 +40,7 @@
     {% include '@<%= themeNameMachine %>/hero/hero.twig' with {
       "modifier": modifier,
       "layout": layout,
-      "image": drupal_field('field_media', 'block_content', id, image_view_mode),
+      "image": content.field_media|render,
       "eyebrow": content.field_eyebrow|field_value,
       "heading": {
         "title": content.field_heading|field_value,
