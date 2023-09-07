@@ -8,7 +8,7 @@
         {% if item.url %}
           <li class="breadcrumb-item"><a href="{{ item.url }}">{{ item.text }}</a>
         {% else %}
-          <li class="breadcrumb-item actuve" aria-current="page">{{ item.text }}</li>
+          <li class="breadcrumb-item active" aria-current="page">{{ item.text }}</li>
         {% endif %}
       {% endfor %}
     </ol>
