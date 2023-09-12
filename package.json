@@ -1,6 +1,6 @@
 {
   "name": "generator-mc-d10-theme",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Yeoman generator for creating Drupal 10 component based themes.",
   "homepage": "https://github.com/mediacurrent/theme_generator_10",
   "author": {
