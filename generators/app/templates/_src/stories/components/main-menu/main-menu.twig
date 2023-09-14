@@ -24,7 +24,7 @@
 
 <nav class="navbar navbar-expand-lg pt-3 pb-3 navbar-light bg-white border-bottom {{ modifier }}">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">{% include '@ignite_theme/logo/logo.twig' with { modifier: "", style: "logo-dark", logo: site_logo } %}</a>
+    <a class="navbar-brand" href="/">{% include '@<%= themeNameMachine %>/logo/logo.twig' with { modifier: "", style: "logo-dark", logo: site_logo } %}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -81,7 +81,7 @@
 
 {% macro cta_btn() %}
   {%
-    include '@ignite_theme/button/button.twig' with {
+    include '@<%= themeNameMachine %>/button/button.twig' with {
       "button": {
         "text": 'Contact Us',
         "url": "/contact-us",
