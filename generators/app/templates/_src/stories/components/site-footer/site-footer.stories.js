@@ -36,8 +36,7 @@ export const SiteFooter = SiteFooterTemplate.bind({});
 
 SiteFooter.args = {
   "site_logo": "./images/logo-footer.svg",
-  "modifier": "bg-black",
-  "menu_modifier": "d-lg-flex justify-content-lg-end",
+  "modifier": "",
   "logo_style": "logo-light",
   "social_icons": {
     "facebook_url": "https://www.facebook.com/",

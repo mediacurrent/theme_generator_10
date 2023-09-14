@@ -17,7 +17,7 @@ export default {
 export const Quote = QuoteTemplate.bind({});
 Quote.args = {
   "quote": {
-    "modifier_class": "p-3 pt-9 pb-9 bg-light rounded",
+    "modifier_class": "",
     "logo": "<img src='https://via.placeholder.com/640x480.png' class='img-fluid' alt='Logod'/>",
     "quote": 'Mediacurrent provided a range of high caliber services including design, UX, development, and digital strategy that are helping us pivot and transform the insurance purchasing experience.',
     "image": "<img src='https://via.placeholder.com/640x480.png' class='img-fluid rounded-circle' alt='Photo of person quoted'/>",
