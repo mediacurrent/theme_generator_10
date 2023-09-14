@@ -21,7 +21,7 @@ export default {
 export const AccordionGroup = AccordionTemplate.bind({});
 
 AccordionGroup.args = {
-  modifier: "bg-light mt-5 mt-lg-12 pt-5 pb-5 pt-lg-12 pb-lg-12 p-md-2",
+  modifier: "bg-light",
   items: [
     {
       "heading": "Curabitur aliquet quam id dui posuere blandit.",

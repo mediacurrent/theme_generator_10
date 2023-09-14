@@ -17,7 +17,7 @@ export default {
 export const MainNavigation = MainMenuTemplate.bind({});
 
 MainNavigation.args = {
-  "modifier": 'navbar-light bg-white border-bottom',
+  "modifier": '',
   "link_modifier": 'text-dark',
   "site_logo": "./images/logo.svg",
   "items": [

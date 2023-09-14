@@ -1,6 +1,6 @@
 {{ attach_library('<%= themeNameMachine %>/site-footer') }}
 
-<div class="site-footer {{ modifier }}">
+<div class="site-footer bg-black {{ modifier }}">
   <div class="container-fluid p-md-5 pt-8 pb-5">
     <div class="row d-lg-flex flex-wrap justify-content-lg-between align-items-center">
       <div class="col-lg-2">
@@ -11,7 +11,7 @@
       <div class="col-lg-8 text-right justify-lg-content-end">
         <div class="mb-9 fs-5 fw-semibold">
           {%
-            include '@<%= themeNameMachine %>/menu/menu.twig' with { modifier: menu_modifier, items: links, item_modifier: link_item_modifier } only
+            include '@<%= themeNameMachine %>/menu/menu.twig' with { modifier: "d-lg-flex justify-content-lg-end", items: links, item_modifier: link_item_modifier } only
           %}
         </div>
         <div class="">

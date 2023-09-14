@@ -22,7 +22,7 @@
 
 {% import _self as menus %}
 
-<nav class="navbar navbar-expand-lg pt-3 pb-3 {{ modifier }}">
+<nav class="navbar navbar-expand-lg pt-3 pb-3 navbar-light bg-white border-bottom {{ modifier }}">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">{% include '@<%= themeNameMachine %>/logo/logo.twig' with { modifier: "", style: "logo-dark", logo: site_logo } %}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
