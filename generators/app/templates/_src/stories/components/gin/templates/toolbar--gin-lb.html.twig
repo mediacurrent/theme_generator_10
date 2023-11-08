@@ -5,6 +5,7 @@
  */
 #}
 {{ attach_library('<%= themeNameMachine %>/gin') }}
+
 {% include '@gin/navigation/toolbar--gin.html.twig' ignore missing %}
 <div class="gin-secondary-toolbar gin-secondary-toolbar--frontend">
   <div class="gin-secondary-toolbar__layout-container">
@@ -58,9 +59,9 @@
     <div class="{{ glb_classes(create_attribute().addClass('region region-sticky')) }}">
       <div class="gin-sticky form-wrapper glb-region-sticky__items__inner gin-sticky form-wrapper">
         <input data-drupal-selector="edit-submit" type="submit" name="op"
-               value="{{ 'Save'|t }}" class="glb-primary-save glb-button glb-button--primary form-submit">
+               value="{{ 'Save'|t }}" class="glb-primary-save js-glb-primary-save glb-button glb-button--primary form-submit">
         <a href="#toggle-sidebar" class="meta-sidebar__trigger trigger" role="button"
-           title="Hide sidebar panel" aria-controls="gin_sidebar" aria-expanded="true"><span class="visually-hidden">Hide sidebar panel</span></a>
+           title="{{ 'Hide sidebar panel'|t }}" aria-controls="gin_sidebar" aria-expanded="true"><span class="visually-hidden">{{ 'Hide sidebar panel'|t }}</span></a>
       </div>
     </div>
   </div>
