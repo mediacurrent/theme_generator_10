@@ -215,7 +215,6 @@ module.exports = class extends Generator {
       'divider',
       'dropdown',
       'field-label',
-      'gin',
       'header',
       'heading',
       'image',
