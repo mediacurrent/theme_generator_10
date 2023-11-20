@@ -123,7 +123,7 @@ function <%= themeNameMachine %>_preprocess_page(array &$variables) {
 /**
  * Implements hook_theme_suggestions_page_alter().
  */
-function ngiitete_theme_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+function <%= themeNameMachine %>_theme_suggestions_page_alter(array &$suggestions, array $variables) {
 
 }
 
