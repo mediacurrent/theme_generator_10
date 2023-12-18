@@ -20,7 +20,8 @@
   },
 
   "parserOptions": {
-    "ecmaVersion": 9
+    "ecmaVersion": 9,
+    "sourceType": "module"
   },
 
   // Inherit settings from ESLint Recommended config.

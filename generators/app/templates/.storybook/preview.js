@@ -1,7 +1,7 @@
-import "../src/stories/global/bootstrap.scss";
+import '../src/stories/global/bootstrap.scss';
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,
@@ -12,4 +12,4 @@ export const parameters = {
     // Opt-out of inline rendering
     inlineStories: false,
   },
-}
+};
