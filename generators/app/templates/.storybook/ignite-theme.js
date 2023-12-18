@@ -10,7 +10,7 @@ import logo from '../static/images/logo-light.svg';
 export default create({
   base: 'auto',
   brandTitle: 'Mediacurrent Ignite Design System',
-  brandUrl: 'https://develop-ignite-cms.pantheonsite.io',
+  brandUrl: '#',
   brandImage: logo,
   brandTarget: '_blank',
 });
