@@ -1,0 +1,9 @@
+@import '../../global/bootstrap-init';
+
+.heading {
+  color: var(--bs-heading-color);
+
+  .text-light & {
+    --bs-heading-color: $light;
+  }
+}

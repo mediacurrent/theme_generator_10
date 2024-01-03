@@ -308,6 +308,11 @@ $warning:       $yellow !default;
 $danger:        $red !default;
 $light:         #F9FAFB !default;
 $dark:          #111112 !default;
+
+// Create Ignite map.
+$ignite-colors: (
+  overlay-color: rgba(33, 11, 11, 0.5),
+);
 // scss-docs-end theme-color-variables
 
 // scss-docs-start theme-colors-map
@@ -322,6 +327,10 @@ $theme-colors: (
   "dark":       $dark
 ) !default;
 // scss-docs-end theme-colors-map
+
+// Merge or remove colors from $theme-colors map.
+$theme-colors: map-merge($theme-colors, $ignite-colors);
+// $theme-colors: map-remove($theme-colors, "info", "light", "dark");
 
 // scss-docs-start theme-text-variables
 $primary-text-emphasis:   shade-color($primary, 60%) !default;
@@ -653,6 +662,7 @@ $font-size-root:              null !default;
 // Ignite: Override font size.
 $font-size-base:              1.25rem !default; // Assumes the browser default, typically `16px`
 $font-size-sm:                $font-size-base * .8 !default;
+$font-size-md:                $font-size-base * 1 !default;
 $font-size-lg:                $font-size-base * 1.25 !default;
 
 // Ignite: Override font weight.
@@ -698,7 +708,7 @@ $headings-font-family:        null !default;
 $headings-font-style:         null !default;
 // Ignite: Override font weight and line height.
 $headings-font-weight:        500 !default;
-$headings-line-height:        1.2 !default;
+$headings-line-height:        1 !default;
 $headings-color:              $black;
 // scss-docs-end headings-variables
 
@@ -847,12 +857,16 @@ $input-btn-focus-color:         rgba($component-active-bg, $input-btn-focus-colo
 $input-btn-focus-blur:          0 !default;
 $input-btn-focus-box-shadow:    0 0 $input-btn-focus-blur $input-btn-focus-width $input-btn-focus-color !default;
 
-$input-btn-padding-y-sm:      .25rem !default;
-$input-btn-padding-x-sm:      .5rem !default;
+$input-btn-padding-y-sm:      10px !default;
+$input-btn-padding-x-sm:      18px !default;
 $input-btn-font-size-sm:      $font-size-sm !default;
 
-$input-btn-padding-y-lg:      .5rem !default;
-$input-btn-padding-x-lg:      1rem !default;
+$input-btn-padding-y-md:      14px !default;
+$input-btn-padding-x-md:      22px !default;
+$input-btn-font-size-md:      $font-size-md !default;
+
+$input-btn-padding-y-lg:      16px !default;
+$input-btn-padding-x-lg:      30px !default;
 $input-btn-font-size-lg:      $font-size-lg !default;
 
 $input-btn-border-width:      1px;

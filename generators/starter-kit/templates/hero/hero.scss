@@ -1,31 +1,84 @@
 @import '../../global/bootstrap-init';
+@import '../button/button.scss';
+@import '../heading/heading.scss';
+@import '../rich-text/rich-text.scss';
 
-// Make the image fit as a cover to limit the total height.
 .hero {
-  border-radius: 0;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
 
-  // Add a mask to the overlay.
-  .card-img-overlay {
-    background-color: rgba(0, 0, 0, 0.6);
-    text-align: center;
-  }
+  .hero-media {
+    @include ig-position-absolute;
+    z-index: 1;
 
-  .heading {
+    &:not(.remove-overlay)::before {
+      content: '';
+      @include ig-position-absolute;
+      background-color: var(--bs-overlay-color);
+      z-index: 1;
+    }
 
-    strong {
-      color: $secondary;
-      font-weight: inherit;
+    picture {
+      width: 100%;
+      height: 100%;
+      display: flex;
+
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        // Classes added to all images by .theme function
+        &.rounded {
+          border-radius: 0 !important;
+        }
+        // Classes added to all images by .theme function
+        &.w-auto {
+          width: 100% !important;
+        }
+      }
     }
   }
 
-  img {
-    width: 100%;
-  }
-}
+  .hero-content {
+    position: relative;
+    z-index: 2;
 
-.overlay {
+    > .row {
+      min-height: 100svh; // stylelint-disable-line
 
-  img {
-    object-fit: cover;
+      @include media-breakpoint-up(md) {
+        min-height: 500px;
+        max-height: 100svh; // stylelint-disable-line
+      }
+    }
+
+    .rounded & {
+      border-radius: var(--bs-border-radius);
+    }
+
+    .btn {
+      width: fit-content;
+    }
+
+    // <-- Storybook specific styles:
+    .sb-main-padded & > .row {
+      // Account for Storybook padding.
+      @include media-breakpoint-down(md) {
+        min-height: calc(100svh - 2rem); // stylelint-disable-line
+      }
+    }
+
+    .sb-only & {
+      // Simulate button centered for centered option.
+      .sb-center .btn {
+        margin: 0 auto;
+      }
+      // Simulate button align-right for pin-right option.
+      .sb-right .btn {
+        margin-inline-start: auto;
+      }
+    }
+    // end Storybook specific styles -->
   }
 }

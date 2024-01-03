@@ -1,94 +1,58 @@
 {{ attach_library('<%= themeNameMachine %>/hero') }}
 
-{% if layout == 'image_right' or layout == 'image_left' %}
-  <div class="hero {{ modifier }}">
-    <div class="row {{ layout == 'image_right' ? 'flex-lg-row-reverse' : 'flex-lg-row' }} align-items-center">
-      <div class="col-lg-6">
-        {{ image }}
-      </div>
-      <div class="col-lg-6 {{ layout == 'image_right' ? 'pe' : 'ps' }}-lg-10">
+<div class="hero{{ layout ? ' ' ~ layout }}">
+  <div class="hero-media{{ overlay ? ' ' ~ overlay }}{{ sb_overlay|length ? sb_overlay ? ' remove-overlay' : '' }}">
+    {% if 'sb-only' in modifier %}
+      <picture>{{ media }}</picture>
+    {% else %}
+      {{ media }}
+    {% endif %}
+  </div>
+  <div class="hero-content container">
+    <div class="row{{ ('default' in modifier) ? ' justify-content-center' }}">
+      <div class="d-flex flex-column align-self-center gap-3 gap-lg-4 py-4{{ modifier ? ' ' ~ modifier }}{{ sb_overlay|length ? sb_overlay ? ' text-dark' : ' text-light' : '' }}">
         {% if eyebrow %}
-          <div class="text-uppercase mb-2 mt-3 mt-lg-0 fs-7">
+          <div class="text-uppercase fs-7">
             {{ eyebrow }}
           </div>
         {% endif %}
-        {%
-          include '@<%= themeNameMachine %>/heading/heading.twig' with {
-            "heading": heading
-          } only
-        %}
-        {%
-          include '@<%= themeNameMachine %>/heading/heading.twig' with {
-            "heading": {
-              title: title,
-              heading_level: '2',
-              modifier: 'display-6'
-            }
-          } only
-        %}
-        {% if body %}
-          {%
-            include '@<%= themeNameMachine %>/rich-text/rich-text.twig' with {
-              "body_text": body.body_text,
-              "modifier": body.modifier
-            } only
-          %}
+        {% if title %}
+          {{ include(
+            '@<%= themeNameMachine %>/heading/heading.twig',
+            {
+              heading: {
+                title: title,
+                heading_level: 1,
+                modifier: 'display-3 mb-0'
+              }
+            },
+            with_context = false
+          )}}
         {% endif %}
-        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-          {% if button.url %}
-            {%
-              include '@<%= themeNameMachine %>/button/button.twig' with {
-                "button": button
-              } only
-            %}
-          {% endif %}
-        </div>
+        {% if subtitle %}
+          {{ include(
+            '@<%= themeNameMachine %>/heading/heading.twig',
+            {
+              heading: {
+                title: subtitle,
+                heading_level: 2,
+                modifier: 'display-3 fs-5 mb-0'
+              }
+            },
+            with_context = false
+          )}}
+        {% endif %}
+        {% if button.url %}
+          {{ include(
+            '@<%= themeNameMachine %>/button/button.twig',
+            {
+              button: button
+            },
+            with_context = false
+          )}}
+        {% endif %}
       </div>
     </div>
   </div>
 
-{% else %}
-  <div class="hero card border-0 {{ modifier }} {{ layout }} {{ layout == 'overlay' ? 'rounded' : 'text-dark' }}">
-    {% if layout != 'image_bottom' %}
-      <div class="{{ layout != 'overlay' ? 'pb-3 pb-lg-8' }}">
-        {{ image }}
-      </div>
-    {% endif %}
-    <div class="{{ layout == 'overlay' ? 'card-img-overlay' }} d-flex align-items-center justify-content-center text-align-center">
-      <div class="{{ layout != 'overlay' ? 'col-md-8 col-xxxl-6' : 'col-lg-8' }}">
-        {% if eyebrow %}
-          <div class="text-uppercase mb-2 fs-7">
-            {{ eyebrow }}
-          </div>
-        {% endif %}
-        {% if heading %}
-          {%
-            include '@<%= themeNameMachine %>/heading/heading.twig' with {
-              "heading": heading
-            } only
-          %}
-        {% endif %}
-        {% if body %}
-          {%
-            include '@<%= themeNameMachine %>/rich-text/rich-text.twig' with {
-              "body_text": body.body_text,
-              "modifier": body.modifier
-            } only
-          %}
-        {% endif %}
-        {% if button.url %}
-          {%
-            include '@<%= themeNameMachine %>/button/button.twig' with {
-              "button": button
-            } only
-          %}
-        {% endif %}
-      </div>
-    </div>
-    {% if layout == 'image_bottom' %}
-      <div class="pt-3 pt-lg-8">
-        {{ image }}
-      </div>
-    {% endif %}
-  </div>
-{% endif %}
+</div>

@@ -1,120 +1,90 @@
-import "./hero.scss";
-import HeroTemplate from "./hero.twig";
+import './hero.scss';
+import HeroTemplate from './hero.twig';
 
 export default {
-  title: "Editorial/Hero",
+  title: 'Editorial/Hero',
   argTypes: {
+    eyebrow: {
+      name: 'Eyebrow Text',
+      description: 'Eyebrow displays above heading.',
+      control: 'text'
+    },
+    title: {
+      name: 'Heading',
+      description: 'Main headline, usually the page title.',
+      control: 'object'
+    },
+    subtitle: {
+      name: 'Subhead',
+      description: 'Subhead displays after heading.',
+      control: 'object'
+    },
+    button: {
+      name: 'Button',
+      description: 'Call to action link styled as button.',
+      control: 'object'
+    },
+    layout: {
+      name: 'Layout Controls',
+      description: 'Style options.',
+      control: 'select',
+      options: {
+        'Rounded corners': 'rounded',
+        'None': 'none',
+      },
+    },
+    modifier: {
+      name: 'Modifier',
+      description: 'Modify the text alignment and position.',
+      control: 'select',
+      options: {
+        'Default': 'col-md-10 col-lg-8 default text-center sb-center sb-only',
+        'Align left': 'col-sm-12 col-lg-8 me-lg-auto text-start sb-only',
+        'Align right': 'col-sm-12 col-lg-8 ms-lg-auto text-end sb-right sb-only',
+        'Pin left': 'col-sm-12 col-lg-6 col-xl-5 me-lg-auto me-xl-auto text-start sb-only',
+        'Pin right': 'col-sm-12 col-lg-6 col-xl-5 offset-lg-6 offset-xl-7 text-start sb-only'
+      },
+    },
+    max_width: {
+      name: 'Max Width',
+      description: 'Controls component’s maximum width.',
+      control: 'select',
+      options: {
+        'Default': 'full-width',
+        'Max 900': '900',
+        'Max 1200': '1200',
+      },
+    },
+    sb_overlay: {
+      name: 'Remove Overlay',
+      description: 'Option to remove image overlay and change text to dark.',
+      control: 'boolean',
+    },
+    subtitle_modifier: {
+      table: { disable: true }
+    },
+    media: {
+      table: { disable: true }
+    }
   },
+  decorators: [
+    (story, args) => `<div style="max-width:${args.args.max_width}px;position:relative;margin:0 auto;" class="sb-only">${story()}</div>`,
+  ],
 };
 
 export const Hero = HeroTemplate.bind({});
 Hero.args = {
-  "modifier": "bg-dark text-light",
-  "image": "<img src='https://via.placeholder.com/800x450.png' class='card-img rounded' alt='test image' />",
-  "eyebrow": "Ignite",
-  "heading": {
-    "title": "Shortcut your design and development",
-    "level": "2",
-    "modifier": "display-3"
+  media: '<img src="https://picsum.photos/1600/900" alt="Placeholder image" />',
+  eyebrow: 'Ignite Eyebrow',
+  title: 'Shortcut your design and development',
+  subtitle: 'Quickly design and customize responsive mobile-first sites with Bootstrap.',
+  button: {
+    text: 'Button label',
+    url: '#',
+    modifier: 'btn-primary has-icon',
+    icon: 'arrow_right_alt'
   },
-  "body": {
-    "body_text": "<p>Quickly design and customize responsive mobile-first sites with Bootstrap.</p>",
-    "modifier": "mb-3 fs-5"
-  },
-  "button": {
-    "text": "Learn more",
-    "url": "#",
-    "modifier": "btn-primary",
-    "icon": 'arrow_right_alt'
-  },
-  "layout": "overlay",
-};
-
-export const HeroImageTop = HeroTemplate.bind({});
-HeroImageTop.args = {
-  "modifier": "text-dark",
-  "image": "<img src='https://via.placeholder.com/1024x576.png' class='card-img rounded' alt='test image' />",
-  "eyebrow": "Ignite",
-  "heading": {
-    "title": "<strong>Shortcut</strong> your <strong>design</strong> and <strong>development</strong> with our website starter kit",
-    "level": "2",
-    "modifier": "display-3"
-  },
-  "body": {
-    "body_text": "<p>Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>",
-    "modifier": "text-dark mb-3"
-  },
-  "button": {
-    "text": "Learn more",
-    "url": "#",
-    "modifier": "btn-primary",
-    "icon": 'arrow_right_alt'
-  },
-  "layout": "image_top",
-};
-
-export const HeroImageBottom = HeroTemplate.bind({});
-HeroImageBottom.args = {
-  "modifier": "text-dark border-0",
-  "image": "<img src='https://via.placeholder.com/1024x576.png' class='card-img rounded' alt='test image' />",
-  "eyebrow": "Ignite",
-  "heading": {
-    "title": "<strong>Shortcut</strong> your <strong>design</strong> and <strong>development</strong> with our website starter kit",
-    "level": "2",
-    "modifier": "display-3 text-dark mb-4"
-  },
-  "body": { },
-  "button": {
-    "text": "Learn more",
-    "url": "#",
-    "modifier": "btn-primary",
-    "icon": 'arrow_right_alt'
-  },
-  "layout": "image_bottom",
-};
-
-export const HeroImageRight = HeroTemplate.bind({});
-HeroImageRight.args = {
-  "modifier": "text-dark border-0",
-  "image": "<img src='https://via.placeholder.com/717x781.png' class='card-img rounded' alt='test image' />",
-  "eyebrow": "Features",
-  "heading": {
-    "title": "We got your <strong>website</strong> and <strong>design system</strong> project covered",
-    "level": "2",
-    "modifier": "display-3 text-dark"
-  },
-  "body": {
-    "body_text": "<p>Lorem ipsum dolor sit amet consectetur. Congue vel sagittis eu ullamcorper vel. Et et dui est ante tempor egestas pellentesque odio. Ornare erat lacus commodo porttitor ut enim. Ultricies mauris blandit in fermentum fringilla mollis risus ut. Nam eget eu suspendisse ut fermentum nascetur pretium lectus. Odio amet amet nam viverra hendrerit diam et. Nibh nunc in senectus odio tempor vitae id. Sit ut sit porta nisl enim.</p>",
-    "modifier": "mb-3"
-  },
-  "button": {
-    "text": "See feature list",
-    "url": "#",
-    "modifier": "btn-primary",
-    "icon": 'arrow_right_alt'
-  },
-  "layout": "image_right",
-};
-
-export const HeroImageLeft = HeroTemplate.bind({});
-HeroImageLeft.args = {
-  "modifier": "text-dark border-0",
-  "image": "<img src='https://via.placeholder.com/717x781.png' class='card-img rounded' alt='test image' />",
-  "eyebrow": "Features",
-  "heading": {
-    "title": "We got your <strong>website</strong> and <strong>design system</strong> project covered",
-    "level": "2",
-    "modifier": "display-3 text-dark"
-  },
-  "body": {
-    "body_text": "<p>Lorem ipsum dolor sit amet consectetur. Congue vel sagittis eu ullamcorper vel. Et et dui est ante tempor egestas pellentesque odio. Ornare erat lacus commodo porttitor ut enim. Ultricies mauris blandit in fermentum fringilla mollis risus ut. Nam eget eu suspendisse ut fermentum nascetur pretium lectus. Odio amet amet nam viverra hendrerit diam et. Nibh nunc in senectus odio tempor vitae id. Sit ut sit porta nisl enim.</p>",
-    "modifier": "mb-3"
-  },
-  "button": {
-    "text": "See feature list",
-    "url": "#",
-    "modifier": "btn-primary",
-    "icon": 'arrow_right_alt'
-  },
-  "layout": "image_left",
+  sb_overlay: false,
+  modifier: 'col-md-10 col-lg-8 default text-center sb-center sb-only',
+  layout: 'rounded',
 };
