@@ -1,35 +1,55 @@
 // Import site utilities.
 @import '../../global/bootstrap-init';
 
-// Style the icon.
-.btn span {
-  float: right;
-  margin-left: 7px;
-  margin-top: 2px;
-  width: 24px;
-  height: 24px;
-  overflow: hidden;
-}
+.btn {
+  font-size: $input-btn-font-size-sm;
+  line-height: 1;
+  padding: $input-btn-padding-y-sm $input-btn-padding-x-sm;
 
-// Override the hove button background color.
-.btn:hover {
-  background-color: $secondary;
-  border-color: $secondary;
-}
+  @include media-breakpoint-up(md) {
+    font-size: $input-btn-font-size-md;
+    padding: $input-btn-padding-y-md $input-btn-padding-x-md;
+  }
 
-// Override border color for primary button.
-body .btn-primary {
-  border-color: $primary;
-}
+  @include media-breakpoint-up(lg) {
+    font-size: $input-btn-font-size-lg;
+    padding: $input-btn-padding-y-lg $input-btn-padding-x-lg;
+  }
 
-body .btn-primary:hover {
-  color: $white;
-}
+  &.has-icon {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: fit-content;
 
-body .btn-outline-primary {
-  background-color: $white;
-}
+    span {
+      margin-left: 8px;
+      overflow: hidden;
+    }
+  }
 
-.btn-light:hover {
-  color: $white !important;
+  &.btn-primary {
+    border-color: $primary;
+
+    &:hover,
+    &:focus {
+      color: $white;
+    }
+  }
+
+  &.btn-outline-primary {
+    background-color: $white;
+
+    &:hover,
+    &:focus {
+      background-color: $secondary;
+      border-color: $secondary;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $secondary;
+    border-color: $secondary;
+  }
 }

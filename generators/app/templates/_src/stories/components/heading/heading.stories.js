@@ -1,3 +1,4 @@
+import "./heading.scss";
 import HeadingTemplate from "./heading.twig";
 
 export default {
@@ -6,9 +7,9 @@ export default {
 
 export const Heading = HeadingTemplate.bind({});
 Heading.args = {
-  "heading": {
-    "title": "Title Lorem Ipsum Dolor",
-    "level": "2",
-    "modifier": "display-3"
+  heading: {
+    title: 'Title Lorem Ipsum Dolor',
+    level: '2',
+    modifier: 'display-3'
   },
 };

@@ -18,8 +18,8 @@ export const Primary = ButtonTemplate.bind({});
 Primary.args = {
   "button": {
     "url": "#",
-    "modifier": "btn-primary",
-    "text": "Primary Button",
+    "modifier": "btn-primary has-icon",
+    "text": "Primary",
     "icon": 'arrow_right_alt',
   }
 };
@@ -28,8 +28,8 @@ export const Secondary = ButtonTemplate.bind({});
 Secondary.args = {
   "button": {
     "url": "https://www.mediacurrent.com",
-    "modifier": "btn-outline-primary",
-    "text": "Secondary Button",
+    "modifier": "btn-outline-primary has-icon",
+    "text": "Secondary",
     "icon": 'arrow_right_alt',
   }
 };
