@@ -1,9 +1,0 @@
-// Import card styles.
-@import '../card/card';
-
-// Make the image fill the entire teaser.
-.teaser img {
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
-}

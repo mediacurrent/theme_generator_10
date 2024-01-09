@@ -48,3 +48,8 @@ it automatically gets compiled to CSS_
 
 _This will perform a one-time deletion of all compiled files within
 the dist/ directory._
+
+### Run Storybook
+`npm run storybook`
+
+_This will start a local server instance of Storybook._
