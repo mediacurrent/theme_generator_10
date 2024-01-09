@@ -89,12 +89,12 @@ module.exports = class extends Generator {
             name: 'Quote'
           },
           {
-            value: 'stats',
-            name: 'Stats'
+            value: 'side-by-side',
+            name: 'Side-by-side'
           },
           {
-            value: 'teaser',
-            name: 'Teaser'
+            value: 'stats',
+            name: 'Stats'
           },
           {
             value: 'text-block',

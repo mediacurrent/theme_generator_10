@@ -8,10 +8,14 @@
 $badge-font-size:                   14px !default;
 $badge-font-weight:                 $font-weight-normal !default;
 $badge-color:                       $white !default;
-$badge-padding-y:                   0.35em !default;
-$badge-padding-x:                   0.65em !default;
+$badge-padding-y:                   0.5rem !default;
+$badge-padding-x:                   1rem !default;
 $badge-border-radius:               $border-radius !default;
 // scss-docs-end badge-variables
 
 // Include Badges styles.
 @import 'bootstrap/scss/badge';
+
+.badge {
+  width: fit-content;
+}

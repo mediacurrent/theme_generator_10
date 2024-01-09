@@ -117,7 +117,7 @@ The theme generator allows you to (optionally) add editorial components.
 - Promo Banner
 - Quote
 - Stats
-- 50-50 Teaser
+- Side-by-Side
 - Text Block
 - Video Block
 

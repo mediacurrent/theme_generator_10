@@ -17,16 +17,14 @@
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {{ title_suffix }}
-
   {%
-    include '@<%= themeNameMachine %>/teaser/teaser.twig' with {
+    include '@<%= themeNameMachine %>/side-by-side/side-by-side.twig' with {
       title: label,
       eyebrow: content.field_eyebrow,
-      summary: content.field_summary,
-      link: url,
-      image: content.field_thumbnail,
-      layout: 'left',
-      modifier: 'rounded-4 mb-6 mb-lg-12',
+      body: content.field_summary,
+      button: url,
+      media: content.field_thumbnail,
+      modifier: 'left',
     } only
   %}
 </div>
