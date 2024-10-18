@@ -1,27 +1,30 @@
 /* eslint-disable max-len, quotes */
-'use strict';
-const chalk = require('chalk');
 
-const mcLogo =
-chalk.blue("\n                    .         .....               .....") +
-chalk.blue("\n         .,::loodxOO0o.   ,lx0KKKK0Okd:.     .:ok0KKKK0ko'") +
-chalk.blue("\n         .ldOXMMMMMMMx..:ONMWNNWMMMMMMWO'  .oKWWNNWMMMMMMXl") +
-chalk.blue("\n             ,OMMMMMMx,xNKo:'''c0MMMMMMMx.;0W0o;'',oXMMMMMX;") +
-chalk.blue("\n              :NMMMMMXKXo.      ;XMMMMMMXOXKc.      lWMMMMWo") +
-chalk.blue("\n              ;XMMMMMMX:        .kMMMMMMMMK;        ;XMMMMMx.") +
-chalk.blue("\n              ;KMMMMMWo          cOkkkkOOk;         ,KMMMMMx.") +
-chalk.blue("\n              ;KMWXKOo.                             .dOKNWMx.") +
-chalk.blue("\n              .::,......',;::clloooooooooollc::,'..    ..,:,") +
-chalk.blue("\n             .';cldxO0KXNNNNNNNNNWMMMMMMMWWWMMMWNXKOkdoc;'..") +
-chalk.blue("\n      .,:looddONMMMMMKl;;,'''...'kMMMMMMWd,,;:cldxO0XWMMMNX0kdlc;'.") +
-chalk.blue("\n ..',;:::,'.. ;XMMMMMk.          oMMMMMMNc         .cXMMMMMNXNWMWNKOxdl:'") +
-chalk.blue("\n...           ;XMMMMMk.          oMMMMMMN:          ,KMMMMMO,.,:loxO0KKO:") +
-chalk.blue("\n              ;XMMMMMk.          dMMMMMMNc          ,KMMMMMk.       ...") +
-chalk.blue("\n              cNMMMMM0'         .xMMMMMMWl          :NMMMMMK,") +
-chalk.blue("\n            .:0MMMMMMWx'.      .oXMMMMMMMK:.      .;OWMMMMMWk,.") +
-chalk.blue("\n         .cox0KKKKKKKKKOdl. .:dk0KKKKKKKKK0xo;  'odOKKKKKKKKKOdo:.") +
-chalk.blue("\n          ................   ................    ...............") +
-"\n              Welcome to the " + chalk.blue('Mediacurrent D10 theme') + " generator!" +
-"\n ";
+// Import the `chalk` module using ES Modules syntax
+import chalk from 'chalk';
 
-module.exports = mcLogo;
+// Define the `mcLogo` using template literals for better readability
+const mcLogo = chalk.blue(`
+                    .         .....               .....
+         .,::loodxOO0o.   ,lx0KKKK0Okd:.     .:ok0KKKK0ko'
+         .ldOXMMMMMMMx..:ONMWNNWMMMMMMWO'  .oKWWNNWMMMMMMXl
+             ,OMMMMMMx,xNKo:'''c0MMMMMMMx.;0W0o;'',oXMMMMMX;
+              :NMMMMMXKXo.      ;XMMMMMMXOXKc.      lWMMMMWo
+              ;XMMMMMMX:        .kMMMMMMMMK;        ;XMMMMMx.
+              ;KMMMMMWo          cOkkkkOOk;         ,KMMMMMx.
+              ;KMWXKOo.                             .dOKNWMx.
+              .::,......',;::clloooooooooollc::,'..    ..,:,
+             .';cldxO0KXNNNNNNNNNWMMMMMMMWWWMMMWNXKOkdoc;'..
+      .,:looddONMMMMMKl;;,'''...'kMMMMMMWd,,;:cldxO0XWMMMNX0kdlc;'.
+ ..',;:::,'.. ;XMMMMMk.          oMMMMMMNc         .cXMMMMMNXNWMWNKOxdl:'
+...           ;XMMMMMk.          oMMMMMMN:          ,KMMMMMO,.,:loxO0KKO:
+              ;XMMMMMk.          dMMMMMMNc          ,KMMMMMk.       ...
+              cNMMMMM0'         .xMMMMMMWl          :NMMMMMK,
+            .:0MMMMMMWx'.      .oXMMMMMMMK:.      .;OWMMMMMWk,.
+         .cox0KKKKKKKKKOdl. .:dk0KKKKKKKKK0xo;  'odOKKKKKKKKKOdo:.
+          ................   ................    ...............
+              Welcome to the ${chalk.blue('Mediacurrent D10 theme')} generator!
+`);
+
+// Export the `mcLogo` using ES Modules syntax
+export default mcLogo;

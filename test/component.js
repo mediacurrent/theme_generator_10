@@ -1,16 +1,21 @@
-'use strict';
-var path = require('path');
-var assert = require('yeoman-assert');
-var helpers = require('yeoman-test');
+// component.test.js
 
-describe('generator-mc-d10-theme:component', function () {
-  before(function () {
-    return helpers.run(path.join(__dirname, '../generators/component'))
-      .withPrompts({someAnswer: true})
-      .toPromise();
+import path, {dirname} from 'path';
+import assert from 'yeoman-assert';
+import helpers from 'yeoman-test';
+import {fileURLToPath} from 'url';
+
+// Recreate __dirname in ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+describe('generator-mc-d10-theme:component', () => {
+  before(async () => {
+    await helpers.run(path.join(__dirname, '../generators/component'))
+      .withPrompts({someAnswer: true});
   });
 
-  it('creates files', function () {
+  it('creates files', () => {
     assert.file([
       'dummyfile.txt'
     ]);

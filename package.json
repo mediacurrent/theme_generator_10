@@ -1,6 +1,7 @@
 {
   "name": "generator-mc-d10-theme",
   "version": "1.0.16",
+  "type": "module",
   "description": "Yeoman generator for creating Drupal 10 component based themes.",
   "homepage": "https://github.com/mediacurrent/theme_generator_10",
   "author": {
@@ -18,32 +19,64 @@
     "drupal"
   ],
   "dependencies": {
-    "chalk": "^1.0.0",
-    "js-yaml": "^3.13.1",
-    "replace-in-file": "^5.0.2",
-    "yeoman-generator": "^3.1.1",
-    "yosay": "^1.0.0"
+    "chalk": "^5.3.0",
+    "js-yaml": "^4.1.0",
+    "replace-in-file": "^8.2.0",
+    "yeoman-environment": "^4.4.3",
+    "yeoman-generator": "^7.3.3",
+    "yosay": "^3.0.0"
+  },
+  "nyc": {
+    "reporter": [
+      "html",
+      "text-summary"
+    ],
+    "exclude": [
+      "test/**",
+      "node_modules/**"
+    ],
+    "require": [
+      "@babel/register"
+    ]
   },
   "devDependencies": {
-    "eslint": "^5.0.0",
+    "@babel/cli": "^7.25.7",
+    "@babel/core": "^7.25.8",
+    "@babel/preset-env": "^7.25.8",
+    "@babel/register": "^7.25.7",
+    "@eslint/js": "^9.12.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "eslint": "^8.57.1",
+    "eslint-config-standard": "^17.1.0",
     "eslint-plugin-ejs": "0.0.2",
-    "gulp": "^4.0.2",
-    "gulp-eslint": "^5.0.0",
-    "gulp-exclude-gitignore": "^1.0.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.6.0",
+    "eslint-plugin-react": "^7.37.1",
+    "globals": "^15.11.0",
+    "gulp": "^5.0.0",
+    "gulp-debug": "^5.0.1",
+    "gulp-eslint-new": "^2.3.0",
+    "gulp-exclude-gitignore": "^1.2.0",
     "gulp-istanbul": "^1.1.3",
-    "gulp-line-ending-corrector": "^1.0.1",
-    "gulp-mocha": "^7.0.2",
-    "gulp-plumber": "^1.0.0",
-    "handlebars": "^4.7.6",
+    "gulp-line-ending-corrector": "^1.0.3",
+    "gulp-mocha": "^10.0.1",
+    "gulp-plumber": "^1.2.1",
+    "handlebars": "^4.7.8",
     "isparta": "^4.1.1",
-    "lodash": "^4.17.15",
-    "mkdirp": "^0.5.1",
+    "lodash": "^4.17.21",
+    "mkdirp": "^3.0.1",
+    "nyc": "^17.1.0",
     "path": "^0.12.7",
-    "yeoman-assert": "^2.0.0",
-    "yeoman-test": "^1.9.1"
+    "yeoman-assert": "^3.1.1",
+    "yeoman-test": "^10.0.1"
   },
   "scripts": {
-    "test": "gulp"
+    "lint": "gulp lint",
+    "test": "gulp test",
+    "watch": "gulp watchFiles"
   },
   "license": "MIT"
 }
