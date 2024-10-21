@@ -6,14 +6,3 @@ dist
 .nyc_output
 src
 static
-/generator_mc_d_10_theme.breakpoints.yml
-/generator_mc_d_10_theme.info.yml
-/generator_mc_d_10_theme.libraries.yml
-/generator_mc_d_10_theme.theme
-/gulp-tasks/
-/.storybook/
-/.stylelintrc.yml
-/favicon.ico
-/logo.svg
-/postcss.config.js
-/screenshot.png
