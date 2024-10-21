@@ -53,6 +53,13 @@ export default class extends Generator {
           'Should we update the .gitignore to ignore compiled files? (i.e. /dist)',
         default: true,
       },
+      {
+        type: 'list',
+        name: 'packageManager',
+        message: 'Which package manager would you like to use?',
+        choices: ['npm', 'yarn', 'pnpm'],
+        default: 'npm',
+      }
     ];
 
     const props = await this.prompt(prompts);
@@ -68,6 +75,8 @@ export default class extends Generator {
 
     // Create a dashed version of the theme name.
     this.dashedThemeName = _.kebabCase(props.themeName);
+
+    this.env.options.nodePackageManager = props.packageManager;
 
     // Get pkg info so we can create a 'generated on' comment.
     const pkgPath = path.resolve(__dirname, '../../package.json');
@@ -340,7 +349,7 @@ export default class extends Generator {
   }
 
   install() {
-    
+
     // Install specific dev dependencies
     const devDependencies = ['yo', 'generator-mc-d10-theme'];
 

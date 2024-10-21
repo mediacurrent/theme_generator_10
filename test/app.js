@@ -16,7 +16,7 @@ describe('generator-mc-d-10-theme:app', () => {
 
   it('creates files', () => {
     assert.file([
-      'dummyfile.txt'
+      'package.json'
     ]);
   });
 });
