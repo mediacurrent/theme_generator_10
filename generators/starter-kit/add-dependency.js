@@ -1,5 +1,5 @@
-// For specific components we need to add additional dependencies.
-module.exports = function addDependency (component, themeNameMachine) {
+// For specific components, we need to add additional dependencies.
+export default function addDependency(component, themeNameMachine) {
   let libraries = {};
 
   // Accordion.
@@ -8,78 +8,72 @@ module.exports = function addDependency (component, themeNameMachine) {
       [component]: {
         css: {
           component: {
-            [`dist/css/${component}.css`]: {}
-          }
+            [`dist/css/${component}.css`]: {},
+          },
         },
-        dependencies: [
-          `${themeNameMachine}/bootstrap-js`
-        ]
+        dependencies: [`${themeNameMachine}/bootstrap-js`],
       },
     };
   }
+
   // Carousel (multi).
   if (component === 'carousel-multi') {
     libraries = {
       [component]: {
         css: {
           component: {
-            [`dist/css/${component}.css`]: {}
-          }
+            [`dist/css/${component}.css`]: {},
+          },
         },
         js: {
-          [`dist/js/${component}.es6.js`]: {}
+          [`dist/js/${component}.es6.js`]: {},
         },
-        dependencies: [
-          `core/drupal`
-        ]
-      }
+        dependencies: ['core/drupal'],
+      },
     };
   }
+
   // Gallery Carousel.
   if (component === 'gallery-lightbox') {
     libraries = {
       [component]: {
         css: {
           component: {
-            [`dist/css/${component}.css`]: {}
-          }
+            [`dist/css/${component}.css`]: {},
+          },
         },
-        dependencies: [
-          `${themeNameMachine}/bootstrap-js`
-        ]
-      }
+        dependencies: [`${themeNameMachine}/bootstrap-js`],
+      },
     };
   }
+
   // Hero.
   if (component === 'hero') {
     libraries = {
       [component]: {
         css: {
           component: {
-            [`dist/css/${component}.css`]: {}
-          }
+            [`dist/css/${component}.css`]: {},
+          },
         },
-        dependencies: [
-          `${themeNameMachine}/card`
-        ]
-      }
+        dependencies: [`${themeNameMachine}/card`],
+      },
     };
   }
+
   // Map.
   if (component === 'map') {
     libraries = {
       [component]: {
         css: {
           component: {
-            [`dist/css/${component}.css`]: {}
-          }
+            [`dist/css/${component}.css`]: {},
+          },
         },
-        dependencies: [
-          `${themeNameMachine}/card`
-        ]
-      }
+        dependencies: [`${themeNameMachine}/card`],
+      },
     };
   }
 
-  return Object.keys(libraries).length && libraries;
-};
+  return Object.keys(libraries).length ? libraries : null;
+}

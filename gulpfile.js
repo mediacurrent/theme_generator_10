@@ -1,49 +1,35 @@
-var gulp = require('gulp');
-var eslint = require('gulp-eslint');
-var excludeGitignore = require('gulp-exclude-gitignore');
-var mocha = require('gulp-mocha');
-var isparta = require('isparta');
-var istanbul = require('gulp-istanbul');
-var plumber = require('gulp-plumber');
+// gulpfile.js
 
-gulp.task('static', function () {
-  return gulp.src('**/*.js')
+import gulp from 'gulp';
+import eslint from 'gulp-eslint-new';
+import excludeGitignore from 'gulp-exclude-gitignore';
+import { exec } from 'child_process';
+
+// Define the 'lint' task
+export function lint() {
+  return gulp.src(['**/*.js', '!node_modules/**'])
     .pipe(excludeGitignore())
-    .pipe(eslint())
+    .pipe(eslint({configType:'flat'}))
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
-});
+}
 
-gulp.task('pre-test', function () {
-  return gulp.src([
-    'generators/**/*.js',
-    '!generators/**/annotations/annotations.js'
-  ])
-    .pipe(excludeGitignore())
-    .pipe(istanbul({
-      includeUntested: true,
-      instrumenter: isparta.Instrumenter
-    }))
-    .pipe(istanbul.hookRequire());
-});
+// Define the 'test' task using nyc for code coverage
+export function test(cb) {
+  exec('nyc mocha', (err, stdout, stderr) => {
+    console.log(stdout);
+    console.error(stderr);
+    cb(err);
+  });
+}
 
-gulp.task('test', gulp.series('pre-test', function (cb) {
-  var mochaErr;
+// Define the 'watch' task
+export function watchFiles() {
+  gulp.watch(['generators/**/*.js', 'test/**'], test);
+}
 
-  gulp.src('test/**/*.js')
-    .pipe(plumber())
-    .pipe(mocha({reporter: 'spec'}))
-    .on('error', function (err) {
-      mochaErr = err;
-    })
-    .pipe(istanbul.writeReports())
-    .on('end', function () {
-      cb(mochaErr);
-    });
-}));
-
-gulp.task('watch', function () {
-  gulp.watch(['generators/**/*.js', 'test/**'], ['test']);
-});
-
-gulp.task('default', gulp.series('static', 'test'));
+// Define the default task
+export default gulp.series(
+  lint,
+  test
+);

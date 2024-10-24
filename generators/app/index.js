@@ -1,75 +1,89 @@
-'use strict';
-const Generator = require('yeoman-generator');
-const chalk = require('chalk');
-const _ = require('lodash');
-const fs = require('fs');
-const mkdirp = require('mkdirp');
-const path = require('path');
+// Import necessary modules
+import Generator from 'yeoman-generator';
+import chalk from 'chalk';
+import _ from 'lodash';
+import fs from 'fs';
+import {mkdirp} from 'mkdirp';
+import path, {dirname} from 'path';
+import {fileURLToPath} from 'url';
 
 // Custom helper modules.
-const mcLogo = require('./mc-logo');
+import mcLogo from './mc-logo.js';
 
-module.exports = class extends Generator {
-  prompting() {
+// Get __dirname in ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+export default class extends Generator {
+  async prompting() {
     // Have Yeoman greet the user.
     this.log(mcLogo);
 
     // Provide the user with prompts.
-    var prompts = [
+    const prompts = [
       {
         name: 'themeName',
         message: 'What is your theme\'s human readable name?',
-        default: _.startCase(this.appname) // Default to current folder name.
+        default: _.startCase(this.appname), // Default to current folder name.
       },
       {
         name: 'themeNameMachine',
         message: 'What is your theme\'s machine name? EX: unicorn_theme',
-        default: function (answers) {
+        default: (answers) => {
           // Default to snake case theme name
           return _.snakeCase(answers.themeName);
-        }
+        },
       },
       {
         name: 'themeDesc',
         message: 'What is your theme\'s description?',
-        default: function (answers) {
+        default: (answers) => {
           // Default to a helpful reminder to change the description later.
-          // eslint-disable-next-line max-len
-          return 'Update ' + answers.themeName + '.info.yml if you want to change the theme description later.';
-        }
+          return (
+            'Update ' +
+            answers.themeName +
+            '.info.yml if you want to change the theme description later.'
+          );
+        },
       },
       {
         name: 'ignoreDist',
         type: 'confirm',
-        // eslint-disable-next-line max-len
-        message: 'Should we update the .gitignore to ignore compiled files? (i.e. /dist)',
-        default: true
+        message:
+          'Should we update the .gitignore to ignore compiled files? (i.e. /dist)',
+        default: true,
+      },
+      {
+        type: 'list',
+        name: 'packageManager',
+        message: 'Which package manager would you like to use?',
+        choices: ['npm', 'yarn', 'pnpm'],
+        default: 'npm',
       }
     ];
 
-    return this.prompt(prompts).then(function (props) {
-      // Should we ignore ./dist files or not?
-      this.ignoreDist = props.ignoreDist;
+    const props = await this.prompt(prompts);
 
-      // Create a underscored version of the theme name.
-      this.cleanThemeName = _.snakeCase(props.themeName);
+    // Should we ignore ./dist files or not?
+    this.ignoreDist = props.ignoreDist;
 
-      // Use the user provided theme machine name.
-      this.themeNameMachine = props.themeNameMachine;
+    // Create a underscored version of the theme name.
+    this.cleanThemeName = _.snakeCase(props.themeName);
 
-      // Create a dashed version of the theme name.
-      this.dashedThemeName = _.kebabCase(props.themeName);
+    // Use the user provided theme machine name.
+    this.themeNameMachine = props.themeNameMachine;
 
-      // Get pkg info so we can create a 'generated on' comment.
-      this.pkg = JSON.parse(
-        fs.readFileSync(
-          path.resolve(path.join(__dirname, '../../package.json')), 'utf8'
-        )
-      );
+    // Create a dashed version of the theme name.
+    this.dashedThemeName = _.kebabCase(props.themeName);
 
-      // To access props later use this.props.someAnswer;
-      this.props = props;
-    }.bind(this));
+    this.env.options.nodePackageManager = props.packageManager;
+
+    // Get pkg info so we can create a 'generated on' comment.
+    const pkgPath = path.resolve(__dirname, '../../package.json');
+    this.pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
+
+    // To access props later use this.props.someAnswer;
+    this.props = props;
   }
 
   configuring() {
@@ -77,39 +91,38 @@ module.exports = class extends Generator {
     // libraries to it if selected by the user.
     this.fs.copyTpl(
       this.templatePath('_theme_name.libraries.yml'),
-      this.destinationPath(this.themeNameMachine + '.libraries.yml'),
+      this.destinationPath(`${this.themeNameMachine}.libraries.yml`),
       {
-        themeNameMachine: this.themeNameMachine
+        themeNameMachine: this.themeNameMachine,
       }
     );
 
-    // Prompt the user for start kit components. If any are selected
-    // they will be copied over to the stories folder and the libraries.yml
-    // file will be appended with the component library.
+    // Prompt the user for starter kit components.
     this.composeWith('mc-d10-theme:starter-kit', {
-      themeName: this.themeNameMachine
+      themeName: this.themeNameMachine,
     });
   }
 
   writing() {
     // Create the project configuration.
-    // This adds node modules and tools needed.
     this.fs.copyTpl(
       this.templatePath('_package.json'),
       this.destinationPath('package.json'),
       {
-        themeName: this.themeNameMachine
+        themeName: this.themeNameMachine,
       }
     );
-    // Only ignore ./dist files if the user has selected
-    // that option.
+
+    // Only ignore ./dist files if the user has selected that option.
     this.fs.copyTpl(
       this.templatePath('gitignore'),
       this.destinationPath('.gitignore'),
       {
-        ignoreDist: this.ignoreDist
+        ignoreDist: this.ignoreDist,
       }
     );
+
+    // Copy configuration files.
     this.fs.copy(
       this.templatePath('editorconfig'),
       this.destinationPath('.editorconfig')
@@ -138,15 +151,17 @@ module.exports = class extends Generator {
       this.templatePath('.storybook'),
       this.destinationPath('.storybook')
     );
-    // We need the theme machine name so we can set
-    // correct namespaces.
+
+    // Copy and template files that require variable substitution.
     this.fs.copyTpl(
       this.templatePath('.storybook/environment.js'),
       this.destinationPath('.storybook/environment.js'),
       {
-        themeNameMachine: this.themeNameMachine
+        themeNameMachine: this.themeNameMachine,
       }
     );
+
+    // Copy static assets.
     this.fs.copy(
       this.templatePath('static'),
       this.destinationPath('static')
@@ -183,26 +198,22 @@ module.exports = class extends Generator {
       'misc',
       'navigation',
       'user',
-      'views'
+      'views',
     ];
 
-    templates.map(async (template) => {
-
-      // Copy the selected component into the theme.
-      // Exclude the templates folder, it needs to go in a different directory.
+    templates.forEach((template) => {
+      // Copy the templates.
       this.fs.copyTpl(
-        [
-          this.templatePath(`_src/templates/${template}`)
-        ],
+        this.templatePath(`_src/templates/${template}`),
         this.destinationPath(`src/templates/${template}`),
         {
           themeNameMachine: this.themeNameMachine,
-          overwrite: false
+          overwrite: false,
         }
       );
     });
 
-    // Copy over the selected components.
+    // Copy over the components.
     const components = [
       'alerts',
       'badge',
@@ -241,44 +252,38 @@ module.exports = class extends Generator {
       'tooltip',
       'typography',
       'utility-nav',
-      'video'
+      'video',
     ];
 
-    components.map(async (component) => {
-
-      // Copy the selected component into the theme.
-      // Exclude the templates folder, it needs to go in a different directory.
+    components.forEach((component) => {
+      // Copy the components.
       this.fs.copyTpl(
-        [
-          this.templatePath(`_src/stories/components/${component}`)
-        ],
+        this.templatePath(`_src/stories/components/${component}`),
         this.destinationPath(`src/stories/components/${component}`),
         {
           themeNameMachine: this.themeNameMachine,
-          overwrite: false
+          overwrite: false,
         }
       );
     });
 
+    // Copy additional assets.
     this.fs.copy(
       this.templatePath('favicon.ico'),
       this.destinationPath('favicon.ico')
     );
-
     this.fs.copy(
       this.templatePath('logo.svg'),
       this.destinationPath('logo.svg')
     );
 
     // Build out the compiled folders.
-    mkdirp('dist');
-    mkdirp('dist/css');
-    mkdirp('dist/fonts');
-    mkdirp('dist/images');
-    mkdirp('dist/js');
+    mkdirp.sync('dist/css');
+    mkdirp.sync('dist/fonts');
+    mkdirp.sync('dist/images');
+    mkdirp.sync('dist/js');
 
-    // Some folders remain empty so add in a gitkeep
-    // so they're checked into git.
+    // Add .gitkeep files to empty directories.
     this.fs.copy(
       this.templatePath('gitkeep'),
       this.destinationPath('dist/css/.gitkeep')
@@ -311,33 +316,29 @@ module.exports = class extends Generator {
     );
 
     // Create the theme files.
-    //
-    // Create theme.info.yml with data provided.
     this.fs.copyTpl(
       this.templatePath('_theme_name.info.yml'),
-      this.destinationPath(this.themeNameMachine + '.info.yml'),
+      this.destinationPath(`${this.themeNameMachine}.info.yml`),
       {
         themeName: this.props.themeName,
         themeDesc: this.props.themeDesc,
         themeNameMachine: this.themeNameMachine,
-        pkg: this.pkg
+        pkg: this.pkg,
       }
     );
-    // Create theme.breakpoints.yml with data provided.
     this.fs.copyTpl(
       this.templatePath('_theme_name.breakpoints.yml'),
-      this.destinationPath(this.themeNameMachine + '.breakpoints.yml'),
+      this.destinationPath(`${this.themeNameMachine}.breakpoints.yml`),
       {
         themeName: this.props.themeName,
-        themeNameMachine: this.themeNameMachine
+        themeNameMachine: this.themeNameMachine,
       }
     );
-    // Create theme.theme with data provided.
     this.fs.copyTpl(
       this.templatePath('_theme_name.theme'),
-      this.destinationPath(this.themeNameMachine + '.theme'),
+      this.destinationPath(`${this.themeNameMachine}.theme`),
       {
-        themeNameMachine: this.themeNameMachine
+        themeNameMachine: this.themeNameMachine,
       }
     );
 
@@ -348,30 +349,23 @@ module.exports = class extends Generator {
   }
 
   install() {
-    // Need to see if we still need this.
-    this.npmInstall();
 
-    // Install the following node modules specifically for theme generator.
-    // Adding the `yo generator-mc-d10-theme` so users can quickly
-    // run the component sub-generator locally.
-    const npmArray = [
-      'yo',
-      'generator-mc-d10-theme'
-    ];
+    // Install specific dev dependencies
+    const devDependencies = ['yo', 'generator-mc-d10-theme'];
 
-    // This runs `npm install ... --save-dev` on the command line.
-    this.npmInstall(npmArray, {
-      saveDev: true
-    });
+    // Add devDependencies to package.json and install them
+    this.addDevDependencies(devDependencies);
   }
 
   end() {
-    this.log(chalk.cyan.bgBlack.bold(
-      // eslint-disable-next-line indent
-`☠️  NOTE: Your new generated theme contains a fair bit of boilerplate code.
+    this.log(
+      chalk.cyan.bgBlack.bold(
+        `☠️  NOTE: Your new generated theme contains a fair bit of boilerplate code.
 This is by design. If you don't need it PLEASE delete it.
 You can always rerun the generator some other time in a different directory
-and copy over what you're missing.`));
+and copy over what you're missing.`
+      )
+    );
     this.log(chalk.red('🚀'));
   }
-};
+}
